@@ -42,6 +42,7 @@ public class Main {
             System.out.println("4. Yes, I'm a Senior Citizen");
             System.out.print("Enter your choice: ");
             int passengerType = input.nextInt();
+            input.nextLine();
 
             switch (passengerType) {
                 case 1:
@@ -73,7 +74,6 @@ public class Main {
             System.out.print("Press 'Enter' to go to the Home Page! ");
             input.nextLine();
         }
-
         input.close();
     }
 }
