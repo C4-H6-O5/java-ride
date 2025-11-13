@@ -67,13 +67,40 @@ public class Main {
                 String idNumber = input.nextLine();
                 // Insert verifying loading bar here
                 System.out.println("\n✅ Your " + category + " Valid ID is now verified!");
-            }
+            } 
 
-            // Loading bar here for transition
-            System.out.println("All set! Let's hit the road, " + name + "!");
-            System.out.print("Press 'Enter' to go to the Home Page! ");
+            welcomePrompt(input, name);
+
+            Passenger passenger = new Passenger(name, age, address, contactNumber, passengerType, idNumber);
+            passenger.homePage(input);
+        } else if (accountType == 2) {
+            System.out.println("\nHop in, Driver!");
+            System.out.println("Final checks: What service will you provide to passengers?");
+            System.out.println("1. Standard");
+            System.out.println("2. Premium");
+            System.out.println("3. Motorcycle");
+            System.out.print("Enter your choice: ");
+            int serviceType = input.nextInt();
             input.nextLine();
+
+            System.out.println("Let your passengers get to know you better!");
+            System.out.println("Set up your Bio (You can always update this later)");
+            System.out.print("Bio: ");
+            String bio = input.nextLine();
+
+            welcomePrompt(input, name);
+
+            Driver driver = new Driver(name, age, address, contactNumber, serviceType, bio);
+            driver.homePage(input);
         }
+
         input.close();
-    }
+    } 
 }
+
+/*  welcomePrompt(Scanner input, String name) {
+    // Loading bar here for transition
+    System.out.println("\nAll set! Let's hit the road, " + name + "!");
+    System.out.print("Press 'Enter' to go to the Home Page! ");
+    input.nextLine();
+} */
