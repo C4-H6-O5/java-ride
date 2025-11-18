@@ -1,6 +1,4 @@
-<div style="text-align:center;">
-  <img src="images/logo.png" alt="JavaRide Logo" width="300" style="display:block;margin:0 auto;" />
-</div>
+![JavaRide Logo](https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png)
 
 # JavaRide 
 **Brewing Better Rides**
