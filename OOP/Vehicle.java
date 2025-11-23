@@ -1,10 +1,27 @@
+public enum VehicleType {
+    MOTORCYCLE,
+    NORMAL,
+    PREMIUM
+}
+
 public abstract class Vehicle {
     protected String plateNumber;
     protected double baseFare;
+    private VehicleType type;
 
-    public Vehicle(String plateNumber, double baseFare) {
+    public Vehicle(String plateNumber, double baseFare, VehicleType type) {
         this.plateNumber = plateNumber;
         this.baseFare = baseFare;
+        this.type = type;
+    }
+
+    public String getPlateNumber(){return plateNumber;}
+    public double getBaseFare(){return baseFare;}
+    public VehicleType getVehicleType(){return type;}
+
+    @Override
+    public String toString() {
+        return String.format("%s (Plate: %s)", type, plateNumber);
     }
 
     public abstract double calculateFare(double distance);
@@ -12,7 +29,7 @@ public abstract class Vehicle {
 
 class Motorcycle extends Vehicle {
     public Motorcycle(String plateNumber) {
-        super(plateNumber, 10.0);
+        super(plateNumber, 10.0, VehicleType.MOTORCYCLE);
     }
 
     @Override
@@ -21,24 +38,24 @@ class Motorcycle extends Vehicle {
     }
 }
 
-class Premium extends Vehicle {
-    public Premium(String plateNumber) {
-        super(plateNumber, 25.0);
-    }
-
-    @Override
-    public double calculateFare(double distance) {
-        return baseFare * distance + 30;
-    }
-}
-
 class Normal extends Vehicle {
     public Normal(String plateNumber) {
-        super(plateNumber, 25.0);
+        super(plateNumber, 25.0, VehicleType.NORMAL);
     }
 
     @Override
     public double calculateFare(double distance) {
         return baseFare * distance + 10;
+    }
+}
+
+class Premium extends Vehicle {
+    public Premium(String plateNumber) {
+        super(plateNumber, 25.0, VehicleType.PREMIUM);
+    }
+
+    @Override
+    public double calculateFare(double distance) {
+        return baseFare * distance + 30;
     }
 }
