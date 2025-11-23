@@ -8,28 +8,28 @@ public class Booking {
     private Passenger passenger;     
     private Driver driver; 
     private Vehicle vehicle;          
-    private String pickupPoint;     
-    private String dropOffPoint;      
+    private LocationManager.Location pickupPoint;
+    private LocationManager.Location dropOffPoint;   
     private double distance;         
     private double amount;           
     private BookingStatus status;
     
-    public Booking(Passenger passenger, String pickupPoint, String dropOffPoint, double distance, Vehicle vehicle) {
+    public Booking(Passenger passenger, LocationManager.Location pickupPoint, LocationManager.Location dropOffPoint, Vehicle vehicle) {
         this.passenger = passenger;
         this.pickupPoint = pickupPoint;
         this.dropOffPoint = dropOffPoint;
-        this.distance = distance;
+        this.vehicle = vehicle;
+        this.distance = Math.abs(pickupPoint.getValue() - dropOffPoint.getValue());
+        this.amount = vehicle.calculateFare(this.distance);
         this.status = BookingStatus.PENDING;
         this.driver = null;
-        this.vehicle = vehicle;
-        this.amount = vehicle.calculateFare(distance);  
     }
 
     // GETTERS
     public Passenger getPassenger() { return passenger; }
     public Driver getDriver() { return driver; }
-    public String getPickupPoint() { return pickupPoint; }
-    public String getDropOffPoint() { return dropOffPoint; }
+    public LocationManager.Location getPickupPoint() { return pickupPoint; }
+    public LocationManager.Location getDropOffPoint() { return dropOffPoint; }
     public double getDistance() { return distance; }
     public double getAmount() { return amount; }
     public BookingStatus getStatus() { return status; }
@@ -63,16 +63,21 @@ public class Booking {
     public void displayBookingInfo() {
         System.out.println("\n=== Booking Details ===");
         System.out.println("Passenger: " + passenger.getName());
+
         if (driver != null) {
             System.out.println("Driver: " + driver.getName());
         } else {
             System.out.println("Driver: Not assigned yet");
         }
-        System.out.println("Pickup: " + pickupPoint);
-        System.out.println("Drop-off: " + dropOffPoint);
+
+        System.out.println("Pickup: " + pickupPoint.getName());
+        System.out.println("Drop-off: " + dropOffPoint.getName());
+
         if (vehicle != null) {
-            System.out.println("Vehicle: " + vehicle.getClass().getSimpleName());
+            System.out.println("Vehicle: " + vehicle);
+            System.out.println("Vehicle Type: " + vehicle.getVehicleType());
         }
+
         System.out.println("Distance: " + distance + " km");
         System.out.println("Amount: Php" + amount);
         System.out.println("Status: " + status);
