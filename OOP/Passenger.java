@@ -1,33 +1,25 @@
-enum UserType {
-    REGULAR,
-    STUDENT,
-    SENIOR,
-    PWD
-}
-
 public class Passenger extends User {
-    private String userType;
-    private String idNumber;
+    private final UserType userType;
+    private final String idNumber;
 
     public Passenger(String name, int age, String address, String contactNumber, UserType userType, String idNumber) {
         super(name, age, address, contactNumber);
         this.userType = userType;
-        this.idNumber = idNumber;
+        // Ensure idNumber is never null for non-regular users
+        this.idNumber = (idNumber == null || idNumber.trim().isEmpty()) ? "N/A" : idNumber;
     }
 
     public UserType getUserType() { return userType; }
     public String getIdNumber() { return idNumber; }
 
-    public void setUserType(UserType userType) { this.userType = userType; }
-    public void setIdNumber(String idNumber) { this.idNumber = idNumber; }
-
     @Override
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println("User Type: " + userType);
-        if (idNumber != null && !idNumber.isEmpty()) {
-            System.out.println("ID Number: " + idNumber);
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()); // Reuse the parent's toString() method
+        sb.append("\nUser Type: ").append(userType);
+        if (userType != UserType.REGULAR) {
+            sb.append("\nID Number: ").append(idNumber);
         }
+        return sb.toString();
     }
-
 }
