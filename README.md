@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png" 
        alt="JavaRide Logo" 
-       width="300"/>
+       width="1000"/>
 </p>
 
 <h1 align="center">JavaRide</h1>
