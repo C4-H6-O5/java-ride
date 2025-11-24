@@ -153,41 +153,71 @@ Review submitted. Thank you!
 
 ---
 
-## 🔄 **System Flow (Mermaid Diagram)**
 
-```mermaid
-flowchart TD
-    A[Start / Login Page] --> B{Select User Type}
-    
-    %% Passenger Flow
-    B -->|Passenger| C[Passenger Main Menu]
-    C --> D[Book a Ride]
-    D --> E[Enter Ride Details]
-    E --> F[System Generates Random Driver]
-    F --> G{Confirm Ride?}
-    G -->|Yes| H[Track Ride Progress]
-    G -->|No| C
-    H --> I{Progress >= 80%?}
-    I -->|Yes| J[Driver Message: "I'm on my way!"]
-    J --> H
-    H --> K[Arrive at Destination]
-    K --> L[Leave Review & Rating]
-    L --> C
-    C --> M[Check Reviews & Ratings]
-    C --> N[View Profile / Booking History / Delete Account]
+## 🔄 **System Flow (Textual / Step-by-Step)**
 
-    %% Driver Flow
-    B -->|Driver| O[Driver Main Menu]
-    O --> P[Receive Ride Requests]
-    P --> Q{Accept or Decline?}
-    Q -->|Accept| R[Complete Ride → Receive Review & Rating]
-    Q -->|Decline| S[Send Short Message to Passenger]
-    R --> O
-    S --> O
-    O --> T[Booking History: Accepted / Declined]
-    O --> U[View Reviews]
-    O --> V[My Earnings → Cash Out]
-```
+### **1️⃣ Login Page**
+
+* Enter Name, Age, Address, Contact Number
+* Select User Type:
+
+  * Passenger / Senior / PWD / Student
+  * Driver (choose vehicle type & set bio)
+
+---
+
+### **2️⃣ Passenger Menu**
+
+1. **Book a Ride**
+
+   * Enter number of passengers
+   * Specify Pickup & Drop-off points
+   * Select Vehicle Type
+   * Fare Estimate displayed
+   * System generates a random driver
+   * Confirm or cancel ride
+
+     * Cancellation allowed only if **<50%** trip progress
+   * Ride progress updates
+
+     * **Driver message at ≥80%:** *“I’m on my way!”*
+   * Upon arrival, leave review & rating
+2. **Check Reviews & Ratings**
+3. **View Profile**
+
+   * Show personal details
+   * View Booking History
+   * Delete Account
+
+---
+
+### **3️⃣ Driver Menu**
+
+1. **Ride Requests**
+
+   * Accept or Decline
+   * View Pickup, Drop-off, Distance, Passengers
+   * After Drop-off → receive review & rating
+   * Optional: send short message to passenger
+2. **Booking History**
+
+   * Accepted / Declined rides
+3. **Reviews**
+
+   * View passenger feedback
+4. **My Earnings**
+
+   * Track total income
+   * Cash-out simulation
+
+---
+
+### **4️⃣ Loop / Continuation**
+
+* After each action, return to **Main Menu** (Passenger or Driver)
+* Allows multiple bookings, rides, and management actions
+
+---
 
 ---
 
