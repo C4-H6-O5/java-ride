@@ -154,7 +154,7 @@ Review submitted. Thank you!
 ---
 
 
-## 🔄 **System Flow (Textual / Step-by-Step)**
+## 🔄 **System Flow**
 
 ### **1️⃣ Login Page**
 
