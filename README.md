@@ -239,9 +239,9 @@ Review submitted. Thank you!
 
 ## 👥 **Contributors**
 
-| Member             | Role                                                          | Responsibilities                                                                                                                                                                                          |
-| ------------------ | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🧑‍💻 **Regina Annemarie Bool** | Core Developer (Logic Lead)                                   | Handles program flow, ride simulation, and input handling.<br>- Set up `main()` and menus<br>- Connect classes together<br>- Simulate booking process                                                     |
+| Member                | Role                                                          | Responsibilities                                                                                                                                                                                          |
+| --------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧑‍💻 **Regina Annemarie Bool**   | Core Developer (Logic Lead)                                   | Handles program flow, ride simulation, and input handling.<br>- Set up `main()` and menus<br>- Connect classes together<br>- Simulate booking process                                                     |
 | 👩‍💻 **Mhalik Perez** | OOP & Structure Lead (Back-End)                               | Focuses on classes, inheritance, and OOP structure.<br>- Create classes like `Vehicle`, `Driver`, `Passenger`<br>- Add constructors, methods, and encapsulation<br>- Design relationships between classes |
 | 🧑‍🎨 **Elaiza Espartinez** | Design & Documentation Lead (Front-End / UI ) | Handles console UI, colors, ASCII art, and documentation.<br>- Improve menu design (ASCII borders, color codes)<br>- Add loading or progress animations<br>- Maintain `README.md` and commit updates      |
 
