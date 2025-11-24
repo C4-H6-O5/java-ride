@@ -23,9 +23,8 @@ public class DataGenerator {
         "Mandaluyong", "Marikina", "Las Pinas", "Paranaque", "Valenzuela"
     };
     
-    private static String[] vehicleTypes = {"Motorcycle", "Normal", "Premium"};
-    
-    private static String[] userTypes = {"Regular", "Student", "Senior", "PWD"};
+    private static VehicleType[] vehicleTypes = VehicleType.values();
+    private static UserType[] userTypes = UserType.values();
     
     private static String[] driverBios = {
         "Experienced driver with excellent safety record.",
@@ -43,6 +42,22 @@ public class DataGenerator {
         return "09" + (100000000 + random.nextInt(900000000));
     }
     
+    private static Vehicle createRandomVehicle() {
+        VehicleType type = vehicleTypes[random.nextInt(vehicleTypes.length)];
+        String plateNumber = "J" + (100 + random.nextInt(900)) + "R"; 
+
+        switch (type) {
+            case MOTORCYCLE:
+                return new Motorcycle(plateNumber);
+            case NORMAL:
+                return new Normal(plateNumber);
+            case PREMIUM:
+                return new Premium(plateNumber);
+            default: 
+                return new Normal(plateNumber);
+        }
+    }
+
     // Generate random driver
     public static Driver generateDriver() {
         String firstName = firstNames[random.nextInt(firstNames.length)];
@@ -52,11 +67,11 @@ public class DataGenerator {
         int age = 25 + random.nextInt(20); // Age between 25-44
         String city = cities[random.nextInt(cities.length)];
         String contact = generatePhoneNumber();
-        String vehicleType = vehicleTypes[random.nextInt(vehicleTypes.length)];
+        Vehicle vehicle = createRandomVehicle(); // Create a vehicle object
         String bio = driverBios[random.nextInt(driverBios.length)];
         double rating = 3.0 + (random.nextDouble() * 2.0); // Rating between 3.0-5.0
         
-        return new Driver(name, age, city, contact, vehicleType, bio, rating);
+        return new Driver(name, age, city, contact, vehicle, bio, rating);
     }
     
     // Generate random passenger
@@ -68,10 +83,10 @@ public class DataGenerator {
         int age = 18 + random.nextInt(50); // Age between 18-67
         String city = cities[random.nextInt(cities.length)];
         String contact = generatePhoneNumber();
-        String userType = userTypes[random.nextInt(userTypes.length)];
+        UserType userType = userTypes[random.nextInt(userTypes.length)]; 
         
         String idNumber = "";
-        if (!userType.equals("Regular")) {
+        if (userType != UserType.REGULAR) {
             // Generate random ID number for special types
             idNumber = "ID" + (100000 + random.nextInt(900000));
         }
