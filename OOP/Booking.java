@@ -1,16 +1,10 @@
-enum BookingStatus {
-    PENDING,
-    ACCEPTED,
-    CANCELLED
-}
-
 public class Booking {
-    private Passenger passenger;     
+    private final Passenger passenger;
     private Driver driver; 
-    private Vehicle vehicle;          
-    private LocationManager.Location pickupPoint;
-    private LocationManager.Location dropOffPoint;   
-    private double distance;         
+    private Vehicle vehicle;
+    private final LocationManager.Location pickupPoint;
+    private final LocationManager.Location dropOffPoint;
+    private final double distance;
     private double amount;           
     private BookingStatus status;
     
@@ -25,7 +19,6 @@ public class Booking {
         this.driver = null;
     }
 
-    // GETTERS
     public Passenger getPassenger() { return passenger; }
     public Driver getDriver() { return driver; }
     public LocationManager.Location getPickupPoint() { return pickupPoint; }
@@ -35,7 +28,6 @@ public class Booking {
     public BookingStatus getStatus() { return status; }
     public Vehicle getVehicle() { return vehicle; }
 
-    // SETTERS
     public void setDriver(Driver driver) { this.driver = driver; }
     public void setStatus(BookingStatus status) { this.status = status; }
     public void setVehicle(Vehicle vehicle) { 
@@ -47,39 +39,38 @@ public class Booking {
         }
     }
     
-    // METHODS
     public void confirmBooking() {
         this.status = BookingStatus.ACCEPTED;
-        System.out.println("Booking confirmed!");
     }
     
-    // Mark booking as cancelled
     public void cancelBooking() {
         this.status = BookingStatus.CANCELLED;
-        System.out.println("Booking cancelled!");
     }
     
-    // Display booking information
-    public void displayBookingInfo() {
-        System.out.println("\n=== Booking Details ===");
-        System.out.println("Passenger: " + passenger.getName());
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n=== Booking Details ===\n");
+        sb.append("Passenger: ").append(passenger.getName()).append("\n");
+        
+        sb.append("Driver: ");
         if (driver != null) {
-            System.out.println("Driver: " + driver.getName());
+            sb.append(driver.getName()).append(" | Rating: ").append(String.format("%.1f⭐", driver.getRating())).append("\n");
         } else {
-            System.out.println("Driver: Not assigned yet");
+            sb.append("Not assigned yet\n");
         }
-
-        System.out.println("Pickup: " + pickupPoint.getName());
-        System.out.println("Drop-off: " + dropOffPoint.getName());
-
+        
+        sb.append("Pickup: ").append(pickupPoint.getName()).append("\n");
+        sb.append("Drop-off: ").append(dropOffPoint.getName()).append("\n");
+        
         if (vehicle != null) {
-            System.out.println("Vehicle: " + vehicle);
-            System.out.println("Vehicle Type: " + vehicle.getVehicleType());
+            sb.append("Vehicle: ").append(vehicle.toString()).append("\n");
         }
-
-        System.out.println("Distance: " + distance + " km");
-        System.out.println("Amount: Php" + amount);
-        System.out.println("Status: " + status);
+        
+        sb.append("Distance: ").append(String.format("%.1f km", distance)).append("\n");
+        sb.append("Amount: ").append(String.format("Php %.2f", amount)).append("\n");
+        sb.append("Status: ").append(status);
+        
+        return sb.toString();
     }
 }
