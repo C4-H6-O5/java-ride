@@ -6,7 +6,7 @@
 
 <h1 align="center">JavaRide</h1>
 <h3 align="center"><i>Brewing Better Rides</i></h3>
-<p align="center"> **by REMix** </p>
+<p align="center"> -- by REMix -- </p>
 <p align="center">Regina * Elaiza * Mhalik</p>
 <hr>
 
