@@ -1,103 +1,226 @@
-![JavaRide Logo](https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png)
 
-# JavaRide 
-**Brewing Better Rides**
-*by REMix*
+# ![JavaRide Logo](https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png)
 
----
-
-## **Project Title**
-### 🚕 RideHailingApp – Console-Based Ride Hailing Simulation
-**RideHailingApp**  
-A console-based simulation of a ride-hailing service inspired by Grab.
+<h1 align="center">JavaRide</h1>
+<h3 align="center"><i>Brewing Better Rides</i></h3>
+<p align="center">by REMix</p>
 
 ---
 
-## **Description / Overview**
-RideHailingApp is a text-based Java application that simulates the essential features of a modern ride-hailing platform.  
-Users can register as **Passengers** or **Drivers** and interact with the system through an organized console interface.
+## 🚗 **About the Project**
 
-The program supports:
-- Creating accounts (with user type: Passenger, Regular, Senior/PWD/Student, or Driver)
-- Booking rides (with driver matching, fare calculation, ride simulation)
-- Confirming or cancelling rides (with rules such as “Cancel < 50% progress only”)
-- Tracking ride progress and receiving updates (e.g., **"I'm on my way!"** at 80%)
-- Viewing booking history and user profile  
-- Ratings, reviews, and driver earnings management  
-- Driver menu for accepting/declining ride requests, sending messages, and cashing out  
-- Text animation, color-coded UI, and ASCII art
+**JavaRide** is a Java console-based ride-hailing simulation.
+It replicates key functionalities of modern ride-hailing apps, including user registration, driver assignment, ride tracking, feedback collection, and earnings management.
+
+**Key Goals:**
+
+* Realistic ride simulation
+* Menu-driven, user-friendly interface
+* Clear implementation of Object-Oriented Programming (OOP) principles
+* Modular and maintainable code structure
 
 ---
 
-## **OOP Concepts Applied**
+## 📘 **Core Functionalities**
 
-### > **Encapsulation**
-- Private fields with public getters/setters.
-- Used in classes like `User`, `Driver`, `Passenger`, `Vehicle`, and `Booking`.
+### 👤 User Registration
 
-### > **Inheritance**
-- `User` → `Passenger`, `Driver`
-- `Vehicle` → `Motorcycle`, `NormalCar`, `PremiumCar`
-
-### > **Polymorphism**
-- `Vehicle` references store subclass objects.
-- Methods like `getType()` are overridden in each vehicle type.
-
-### > **Abstraction**
-- `Vehicle` is an abstract base class for specific vehicle types.
-
-### > **Other Concepts**
-- Exception handling for invalid inputs.
-- Collections (`ArrayList`) for storing users, bookings, reviews, drivers.
-- Random generator to assign drivers to bookings.
+* **Passenger**
+* **Senior / PWD / Student** (Fare discounts)
+* **Driver** (choose vehicle type & set bio)
 
 ---
 
-## **Program Structure**
+### 🧳 Passenger Features
 
-### > **Main System Features**
-- **Login Page**
-- Collects: Name, Age, Address, Contact Number  
-- User type selection: Regular / Senior / PWD / Student  
-- Drivers select vehicle type: Motorcycle, Normal, Premium  
-- “Set Bio” for driver descriptions
+* Book a ride:
 
-### > **Passenger Menu**
-- **Book a Ride**
-  - Enter no. of passengers  
-  - Pickup Point  
-  - Drop-off Point  
-  - Choose Vehicle Type  
-  - Amount to be Paid (fare calculation)  
-  - Random driver generation  
-  - Confirm/Reject  
-  - Cancellation allowed only if **< 50%** trip progress  
-  - Driver message appears at **≥ 80%**: *“I’m on my way!”*  
-  - After arrival: Leave Review + Rating
+  * Number of passengers
+  * Pickup & drop-off points
+  * Vehicle type
+  * Fare estimate & driver assignment
+    
+* Track ride progress
 
-- **Check Reviews & Ratings**
-- **User Profile**
-  - Show Details  
-  - View Booking History  
-  - Delete Account  
-
-### > **Driver Menu**
-- **Ride Requests**
-  - Accept / Decline  
-  - Shows Pickup, Drop-off, Distance, Passengers  
-  - After drop-off → receive review + rating  
-  - Option to send a short message to the passenger  
-
-- **Booking History**
-  - Accepted  
-  - Declined  
-
-- **My Earnings**
-  - Track income  
-  - Cash Out  
+  * **Driver message at ≥80%:** *“I’m on my way!”*
+  * Cancellation allowed only if **<50% progress**
+    
+* Leave review & rating
+  
+* View profile and booking history
 
 ---
 
-## **How to Run the Program**
+### 🚙 Driver Features
 
+* Receive ride requests:
+
+  * Accept / decline
+  * Check distance, passengers, pickup & drop-off points
+  * Send short messages to passengers
+    
+* Track booking history (accepted / declined)
+* View passenger reviews
+* Track earnings and cash-out
+
+---
+
+### 🌐 System Enhancements
+
+* Randomized driver assignment
+* Color-coded console UI
+* ASCII art and text animations
+
+---
+
+## 🧠 **OOP Concepts Applied**
+
+| Concept           | Implementation                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------ |
+| **Encapsulation** | Private fields with getters/setters in `User`, `Passenger`, `Driver`, `Vehicle`, `Booking` |
+| **Inheritance**   | `User → Passenger / Driver`; `Vehicle → Motorcycle / NormalCar / PremiumCar`               |
+| **Polymorphism**  | Overridden methods in Vehicle subclasses (`getType()`, `calculateFare()`)                  |
+| **Abstraction**   | `Vehicle` is abstract; base logic implemented in subclasses                                |
+
+---
+
+## 🗂️ **Project Structure**
+
+```
+src/
+└── javaride/
+    ├── Main.java
+    ├── User.java
+    ├── Passenger.java
+    ├── Driver.java
+    ├── Vehicle.java
+    ├── Motorcycle.java
+    ├── NormalCar.java
+    ├── PremiumCar.java
+    ├── Booking.java
+    ├── Review.java
+    └── DataManager.java
+```
+
+---
+
+## ▶️ **How to Run**
+
+**Compile:**
+
+```
+javac javaride/*.java
+```
+
+**Run:**
+
+```
+java javaride.Main
+```
+
+---
+
+## 📝 **Sample Console Flow**
+
+```
+Welcome to JavaRide!
+Enter your name: Lia
+Choose user type:
+1. Regular Passenger
+2. Senior/PWD/Student
+Your choice: 1
+
+Booking a Ride...
+Pickup: Ayala Terminal
+Drop-off: Divisoria
+Vehicle: Normal Car
+Estimated Fare: ₱112.00
+
+Driver matched: Carlo (Normal Car)
+Start ride? (Y/N): Y
+
+[35%] Heading to your location...
+[80%] "I'm on my way!"
+[100%] Ride completed!
+
+Rate your driver (1–5): 5
+Review submitted. Thank you!
+```
+
+---
+
+## 🔄 **System Flow (Mermaid Diagram)**
+
+```mermaid
+flowchart TD
+    A[Start / Login Page] --> B{Select User Type}
+    
+    %% Passenger Flow
+    B -->|Passenger| C[Passenger Main Menu]
+    C --> D[Book a Ride]
+    D --> E[Enter Ride Details]
+    E --> F[System Generates Random Driver]
+    F --> G{Confirm Ride?}
+    G -->|Yes| H[Track Ride Progress]
+    G -->|No| C
+    H --> I{Progress >= 80%?}
+    I -->|Yes| J[Driver Message: "I'm on my way!"]
+    J --> H
+    H --> K[Arrive at Destination]
+    K --> L[Leave Review & Rating]
+    L --> C
+    C --> M[Check Reviews & Ratings]
+    C --> N[View Profile / Booking History / Delete Account]
+
+    %% Driver Flow
+    B -->|Driver| O[Driver Main Menu]
+    O --> P[Receive Ride Requests]
+    P --> Q{Accept or Decline?}
+    Q -->|Accept| R[Complete Ride → Receive Review & Rating]
+    Q -->|Decline| S[Send Short Message to Passenger]
+    R --> O
+    S --> O
+    O --> T[Booking History: Accepted / Declined]
+    O --> U[View Reviews]
+    O --> V[My Earnings → Cash Out]
+```
+
+---
+
+## 🔍 **Feature Comparison Table**
+
+| Feature / Menu         | Passenger | Driver                 |
+| ---------------------- | --------- | ---------------------- |
+| Book a Ride            | ✅ Yes     | ❌ No                   |
+| Confirm Ride           | ✅ Yes     | ❌ No                   |
+| Track Ride Progress    | ✅ Yes     | ❌ No                   |
+| Leave Review & Rating  | ✅ Yes     | ✅ Yes (after drop-off) |
+| Receive Ride Requests  | ❌ No      | ✅ Yes                  |
+| Accept / Decline Ride  | ❌ No      | ✅ Yes                  |
+| Send Messages          | ❌ No      | ✅ Yes                  |
+| View Profile           | ✅ Yes     | ✅ Yes                  |
+| Booking History        | ✅ Yes     | ✅ Yes                  |
+| Check Reviews          | ✅ Yes     | ✅ Yes                  |
+| My Earnings / Cash Out | ❌ No      | ✅ Yes                  |
+
+---
+
+## 👥 **Contributors**
+
+| Member             | Role                                                          | Responsibilities                                                                                                                                                                                          |
+| ------------------ | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧑‍💻 **Regina Bool** | Core Developer (Logic Lead)                                   | Handles program flow, ride simulation, and input handling.<br>- Set up `main()` and menus<br>- Connect classes together<br>- Simulate booking process                                                     |
+| 👩‍💻 **Mhalik Perez** | OOP & Structure Lead (Back-End)                               | Focuses on classes, inheritance, and OOP structure.<br>- Create classes like `Vehicle`, `Driver`, `Passenger`<br>- Add constructors, methods, and encapsulation<br>- Design relationships between classes |
+| 🧑‍🎨 **Elaiza Espartinez** | Design & Documentation Lead (Front-End / UI ) | Handles console UI, colors, ASCII art, and documentation.<br>- Improve menu design (ASCII borders, color codes)<br>- Add loading or progress animations<br>- Maintain `README.md` and commit updates      |
+
+
+---
+
+## 📢 **Student Disclaimer**
+
+<small>
+This project was created by students as part of an academic requirement.  
+It is intended solely for learning and demonstration purposes.  
+Students may reference it, but original implementations are strongly encouraged.
+</small>
 
