@@ -1,10 +1,10 @@
 
-# ![JavaRide Logo](https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png)
+<h1 align="center"># ![JavaRide Logo](https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png)</h1>
 
 <h1 align="center">JavaRide</h1>
 <h3 align="center"><i>Brewing Better Rides</i></h3>
 <p align="center">by REMix</p>
-
+<p align="center">Regina * Elaiza * Mhalik</p>
 ---
 
 ## 🚗 **About the Project**
