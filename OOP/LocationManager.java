@@ -1,49 +1,53 @@
 import java.util.*;
 
 public class LocationManager {
-    private Map<String, Integer> locations = new HashMap<>();
-    private ArrayList<String> locationList = new ArrayList<>();
+    public static class Location {
+        private final String name;
+        private final int value;
 
-    public LocationManager() {
-        listLocations();
-    }
+        public Location(String name, int value) {
+            this.name = name;
+            this.value = value;
+        }
 
-    private void listLocations() {
-        locations.put("BatStateU Alangilan", 0);
-        locations.put("Grand terminal", 10);
-        locations.put("Don Ramos", 12);
-        locations.put("Capitolio", 15);
-        locations.put("Nuciti", 18);
-        locations.put("Plaza", 25);
-        locations.put("SM Mall", 25);
-        locations.put("BatStateU Pablo Borbon", 30);
-        locations.put("Batangas Pier", 35);
+        public String getName() { return name; }
+        public int getValue() { return value; }
 
-        locationList.addAll(locations.keySet());
-        Collections.sort(locationList); 
-    }
-
-    public void displayLocations() {
-        for (int i = 0; i < locationList.size(); i++) {
-            System.out.println((i + 1) + ". " + locationList.get(i));
+        @Override
+        public String toString() {
+            return name;
         }
     }
 
-    public List<String> getLocationList() {return locationList;}
+    private final List<Location> locations;
 
-    public String getLocationByIndex(int index) {return locationList.get(index);}
-
-    public int getValue(String location) {return locations.get(location);}
-
-    public int computeDistance(String from, String to) {
-        return Math.abs(locations.get(from) - locations.get(to));
+    public LocationManager() {
+        this.locations = new ArrayList<>();
+        initializeLocations();
     }
 
-    public String removeLocationByIndex(int index) {
-        return locationList.remove(index);
+    private void initializeLocations() {
+        locations.add(new Location("BatStateU Alangilan", 0));
+        locations.add(new Location("Grand terminal", 10));
+        locations.add(new Location("Don Ramos", 12));
+        locations.add(new Location("Capitolio", 15));
+        locations.add(new Location("Nuciti", 18));
+        locations.add(new Location("Plaza", 25));
+        locations.add(new Location("SM Mall", 25));
+        locations.add(new Location("BatStateU Pablo Borbon", 30));
+        locations.add(new Location("Batangas Pier", 35));
+        
+        locations.sort(Comparator.comparing(Location::getName));
     }
 
-    public void addLocationAtIndex(String location, int index) {
-        locationList.add(index, location);
+    public List<Location> getLocations() {
+        return Collections.unmodifiableList(locations);
+    }
+
+    public Location getLocationByIndex(int index) {
+        if (index >= 0 && index < locations.size()) {
+            return locations.get(index);
+        }
+        return null;
     }
 }
