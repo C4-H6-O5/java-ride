@@ -219,8 +219,6 @@ Review submitted. Thank you!
 
 ---
 
----
-
 ## 🔍 **Feature Comparison Table**
 
 | Feature / Menu         | Passenger | Driver                 |
