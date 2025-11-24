@@ -1,12 +1,6 @@
-public enum VehicleType {
-    MOTORCYCLE,
-    NORMAL,
-    PREMIUM
-}
-
 public abstract class Vehicle {
-    protected String plateNumber;
-    protected double baseFare;
+    private final String plateNumber;
+    private final double baseFare;
     private VehicleType type;
 
     public Vehicle(String plateNumber, double baseFare, VehicleType type) {
@@ -34,7 +28,7 @@ class Motorcycle extends Vehicle {
 
     @Override
     public double calculateFare(double distance) {
-        return baseFare * distance;
+        return getBaseFare() * distance;
     }
 }
 
@@ -45,7 +39,7 @@ class Normal extends Vehicle {
 
     @Override
     public double calculateFare(double distance) {
-        return baseFare * distance + 10;
+        return getBaseFare() * distance + 10;
     }
 }
 
@@ -56,6 +50,6 @@ class Premium extends Vehicle {
 
     @Override
     public double calculateFare(double distance) {
-        return baseFare * distance + 30;
+        return getBaseFare() * distance + 30;
     }
 }
