@@ -249,11 +249,7 @@ Review submitted. Thank you!
 
 ---
 
-## 📢 **Student Disclaimer**
+## 📢 **DISCLAIMER**
 
-<small>
-This project was created by students as part of an academic requirement.  
-It is intended solely for learning and demonstration purposes.  
-Students may reference it, but original implementations are strongly encouraged.
-</small>
+<small> The JavaRide project was developed by Computer Science students as part of the academic requirements for CS 211: Object-Oriented Programming. It is intended exclusively for educational and demonstration purposes. Students are welcome to review and learn from the project, but creating original implementations is highly encouraged. </small>
 
