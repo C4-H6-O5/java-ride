@@ -30,7 +30,16 @@ public class ConsoleUI {
         }
     }
 
-    private void loading(String text, int steps) {
+    // Car loading animation
+private void loadingCars(String message) {
+    String bar = "[🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗]";
+    System.out.println("
+" + Color.CYAN + message + Color.RESET);
+    System.out.println(Color.GREEN + bar + " 100%" + Color.RESET + "
+");
+}
+
+private void loading(String text, int steps) {
         System.out.println("\n" + Color.CYAN + text + Color.RESET);
         for (int i = 0; i < steps; i++) {
             System.out.print(Color.CYAN + "█" + Color.RESET);
