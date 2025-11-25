@@ -1,12 +1,22 @@
 import java.util.Scanner;
 
-
 public class ConsoleUI {
 
     private final boolean animations;
     private final String bookingsFile;
     private final Scanner input = new Scanner(System.in);
     private final BookingService bookingService;
+
+    public static class Color {
+        public static final String RESET = "\u001B[0m";
+        public static final String RED = "\u001B[31m";
+        public static final String GREEN = "\u001B[32m";
+        public static final String YELLOW = "\u001B[33m";
+        public static final String BLUE = "\u001B[34m";
+        public static final String PURPLE = "\u001B[35m";
+        public static final String CYAN = "\u001B[36m";
+        public static final String WHITE = "\u001B[37m";
+    }
 
     public ConsoleUI(boolean animations, String bookingsFile) {
         this.animations = animations;
@@ -21,39 +31,43 @@ public class ConsoleUI {
     }
 
     private void loading(String text, int steps) {
-        System.out.println("\n" + text);
+        System.out.println("\n" + Color.CYAN + text + Color.RESET);
         for (int i = 0; i < steps; i++) {
-            System.out.print("█");
-            waitAnim(50);
+            System.out.print(Color.CYAN + "█" + Color.RESET);
+            waitAnim(40);
         }
-        System.out.println(" 100%\n");
+        System.out.println(" " + Color.GREEN + "100%" + Color.RESET + "\n");
     }
 
     public void start() {
 
-        System.out.println("Hello! Welcome to Grab 🛺");
-        System.out.print("Press Enter to sign up...");
+        System.out.println(Color.GREEN + "Hello! Welcome to Grab 🛺" + Color.RESET);
+        System.out.print(Color.YELLOW + "Press Enter to sign up..." + Color.RESET);
         input.nextLine();
 
         loading("Loading Sign Up Page......", 30);
-        System.out.println("Your Journey Starts Here!\n");
+        System.out.println(Color.CYAN + "Your Journey Starts Here!" + Color.RESET + "\n");
 
-        System.out.print("Name: ");
+        System.out.print(Color.YELLOW + "Name: " + Color.RESET);
         String name = input.nextLine();
 
-        System.out.print("Age: ");
+        System.out.print(Color.YELLOW + "Age: " + Color.RESET);
         int age = Integer.parseInt(input.nextLine());
 
-        System.out.print("Address: ");
+        System.out.print(Color.YELLOW + "Address: " + Color.RESET);
         String address = input.nextLine();
 
-        System.out.print("Contact Number: ");
+        System.out.print(Color.YELLOW + "Contact Number: " + Color.RESET);
         long contact = Long.parseLong(input.nextLine());
 
         loading("Setting up your account......", 20);
 
-        MenuHelper.box("1. 👤 Passenger", "2. 👨🏻‍💼 Driver");
-        System.out.print("Account Type: ");
+        MenuHelper.box(
+                "1. 👤 Passenger",
+                "2. 👨🏻‍💼 Driver"
+        );
+
+        System.out.print(Color.YELLOW + "Account Type: " + Color.RESET);
         int type = Integer.parseInt(input.nextLine());
 
         if (type == 1) passengerFlow(name, age, address, contact);
@@ -66,14 +80,14 @@ public class ConsoleUI {
 
         loading("Loading Passenger Options......", 15);
 
-        System.out.println("\nWelcome to the Ride, Passenger! 🎉");
+        System.out.println(Color.GREEN + "\nWelcome to the Ride, Passenger! 🎉" + Color.RESET);
         MenuHelper.box(
                 "1. ❌ Regular Passenger",
                 "2. 🎓 Student",
                 "3. ♿ PWD",
                 "4. 👴 Senior Citizen"
         );
-        System.out.print("Enter choice: ");
+        System.out.print(Color.YELLOW + "Enter choice: " + Color.RESET);
         int choice = Integer.parseInt(input.nextLine());
 
         String category = switch (choice) {
@@ -85,9 +99,9 @@ public class ConsoleUI {
 
         String id = null;
         if (!category.equals("Regular")) {
-            System.out.print("Enter valid ID number: ");
+            System.out.print(Color.YELLOW + "Enter valid ID number: " + Color.RESET);
             id = input.nextLine();
-            System.out.println("✅ ID Verified!");
+            System.out.println(Color.GREEN + "✅ ID Verified!" + Color.RESET);
         }
 
         loading("Preparing Dashboard...", 30);
@@ -100,12 +114,13 @@ public class ConsoleUI {
 
     private void driverFlow(String name, int age, String address, long contact) {
 
-        System.out.println("\nDriver Setup:");
+        System.out.println(Color.BLUE + "\nDriver Setup:" + Color.RESET);
         MenuHelper.box("1. Standard", "2. Premium", "3. Motorcycle");
-        System.out.print("Enter service type: ");
+
+        System.out.print(Color.YELLOW + "Enter service type: " + Color.RESET);
         int service = Integer.parseInt(input.nextLine());
 
-        System.out.print("Set driver bio: ");
+        System.out.print(Color.YELLOW + "Set driver bio: " + Color.RESET);
         String bio = input.nextLine();
 
         loading("Creating Driver Profile...", 25);
@@ -118,17 +133,15 @@ public class ConsoleUI {
 
     private void homePassenger(Passenger p) {
 
-        MenuHelper.title("🚘 Welcome to your Grab Dashboard!");
-        System.out.println("Thank you for choosing Grab 💚");
-
-        // Add booking menu later…
+        MenuHelper.title(Color.GREEN + "🚘 Welcome to your Grab Dashboard!" + Color.RESET);
+        System.out.println(Color.CYAN + "Thank you for choosing Grab 💚" + Color.RESET);
     }
 
     // ------------------------- DRIVER HOME -------------------------
 
     private void homeDriver(Driver d) {
 
-        MenuHelper.title("🚗 Driver Dashboard");
-        // Add driver options later…
+        MenuHelper.title(Color.GREEN + "🚗 Driver Dashboard" + Color.RESET);
+        System.out.println(Color.CYAN + "Welcome, Driver!" + Color.RESET);
     }
 }
