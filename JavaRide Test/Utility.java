@@ -75,16 +75,12 @@ public final class Utility {
     }
 
     public static Driver findRandomDriver(VehicleType type, List<Driver> driverAccounts, boolean showLoading) {
-        if (showLoading) {
-            showLoadingAnimation("Searching for drivers...");
-        }
-
         List<Driver> suitableDrivers = driverAccounts.stream()
             .filter(d -> d.getVehicle().getVehicleType() == type)
             .collect(Collectors.toList());
 
         if (suitableDrivers.isEmpty()) {
-            System.out.println(); // Newline after loading
+            System.out.println(); 
             return null;
         }
         return suitableDrivers.get(random.nextInt(suitableDrivers.size()));
@@ -96,16 +92,40 @@ public final class Utility {
         input.nextLine();
     }
 
-    public static void showLoadingAnimation(String message) {
-        System.out.println();
-        for (int i = 0; i < 3; i++) {
-            System.out.print(message + " " + ".".repeat(i + 1) + "\r");
-            try {
-                Thread.sleep(700); // Wait for 0.7 seconds
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+    public static void showLoading(String task, int duration) {
+        String GREEN = "\u001B[32m";
+        String RESET = "\u001B[0m";
+        
+        // SOLID BLOCKS
+        char FILL = '█'; 
+        char EMPTY = '░'; 
+        
+        int barLength = 30;
+        long sleepTime = (duration * 1000) / 100;
+
+        System.out.println(task);
+
+        try {
+            for (int i = 0; i <= 100; i++) {
+                int filled = (i * barLength) / 100;
+                
+                StringBuilder bar = new StringBuilder();
+                
+                for (int j = 0; j < barLength; j++) {
+                    if (j < filled) {
+                        bar.append(FILL);
+                    } else {
+                        bar.append(EMPTY);
+                    }
+                }
+
+                System.out.print("\r" + GREEN + bar.toString() + " " + i + "%" + RESET);
+                
+                Thread.sleep(sleepTime);
             }
+            System.out.println("\n");
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted.");
         }
-        System.out.println(); // Move to the next line after animation
     }
 }
