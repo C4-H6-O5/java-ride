@@ -292,6 +292,7 @@ public class Main {
         System.out.print("Enter a short Bio about yourself: ");
         String bio = input.nextLine();
 
+        Utility.clearConsole();
         System.out.println("\n--- Vehicle Details ---");
         System.out.print("Enter your vehicle's Plate Number: ");
         String plateNumber = input.nextLine();
@@ -308,6 +309,7 @@ public class Main {
     }
 
     private static void viewRideRequests(Driver driver) {
+        Utility.clearConsole();
         System.out.println("\n--- Pending Ride Requests ---");
         List<Booking> pendingRequests = allBookings.stream()
             .filter(b -> b.getStatus() == BookingStatus.PENDING && b.getVehicle().getVehicleType() == driver.getVehicle().getVehicleType())
@@ -329,6 +331,7 @@ public class Main {
         if (choice <= 0 || choice > pendingRequests.size()) return;
 
         Booking selectedBooking = pendingRequests.get(choice - 1);
+        Utility.clearConsole();
         System.out.println("\n--- Request Details ---");
         System.out.println("Pickup: " + selectedBooking.getPickupPoint().getName());
         System.out.println("Drop Off: " + selectedBooking.getDropOffPoint().getName());
@@ -351,6 +354,7 @@ public class Main {
     }
 
     private static void viewDriverBookingHistory(Driver driver) {
+        Utility.clearConsole();
         System.out.println("\n--- My Booking History ---");
         List<Booking> myRides = allBookings.stream()
             .filter(b -> driver.equals(b.getDriver()))
@@ -381,6 +385,7 @@ public class Main {
     }
 
     private static void viewDriverEarnings(Driver driver) {
+        Utility.clearConsole();
         System.out.println("\n--- My Earnings ---");
         double totalEarnings = allBookings.stream()
             .filter(b -> driver.equals(b.getDriver()) && b.getStatus() == BookingStatus.ACCEPTED)
