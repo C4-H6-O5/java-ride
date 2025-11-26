@@ -40,6 +40,23 @@ public final class Utility {
         input.nextLine();
     }
 
+    public static UserType selectUserType(Scanner input) {
+        UserType[] types = UserType.values();
+        System.out.println("Select User Type:");
+        for (int i = 0; i < types.length; i++) {
+            System.out.printf("[%d] %s\n", i + 1, types[i]);
+        }
+        while (true) {
+            System.out.print("Enter number for type: ");
+            int choice = getIntInput(input);
+            if (choice > 0 && choice <= types.length) {
+                return types[choice - 1];
+            } else {
+                System.out.println("Invalid choice.");
+            }
+        }
+    }
+
     public static LocationManager.Location selectLocation(Scanner input, LocationManager locationManager, LocationManager.Location locationToExclude) {
         List<LocationManager.Location> availableLocations = new ArrayList<>(locationManager.getLocations());
         if (locationToExclude != null) {
@@ -57,23 +74,6 @@ public final class Utility {
                 return availableLocations.get(choice - 1);
             } else {
                 System.out.println("Invalid number. Please try again.");
-            }
-        }
-    }
-
-    public static UserType selectUserType(Scanner input) {
-        UserType[] types = UserType.values();
-        System.out.println("Select User Type:");
-        for (int i = 0; i < types.length; i++) {
-            System.out.printf("[%d] %s\n", i + 1, types[i]);
-        }
-        while (true) {
-            System.out.print("Enter number for type: ");
-            int choice = getIntInput(input);
-            if (choice > 0 && choice <= types.length) {
-                return types[choice - 1];
-            } else {
-                System.out.println("Invalid choice.");
             }
         }
     }
