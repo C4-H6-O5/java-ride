@@ -119,23 +119,29 @@ public class Main {
         System.out.print("Enter number of passengers: ");
         int numPassengers = Utility.getIntInput(input);
 
+        Utility.clearConsole();
         System.out.println("\nSelect a Pickup Point:");
         LocationManager.Location pickupPoint = Utility.selectLocation(input, locationManager, null);
 
+        Utility.clearConsole();
         System.out.println("\nSelect a Drop-off Point:");
         LocationManager.Location dropOffPoint = Utility.selectLocation(input, locationManager, pickupPoint);
 
+        Utility.clearConsole();
         System.out.println("\nSelect a Vehicle Type:");
         VehicleType vehicleType = Utility.selectVehicleType(input);
 
+        Utility.clearConsole();
         Utility.showLoading("\n🚗💨 Searching for a driver...\n", 3);
         Driver assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, true);
 
         if (assignedDriver == null) {
+            Utility.clearConsole();
             System.out.println("Sorry, no " + vehicleType + " drivers are available right now. Please try again later.");
             return;
         }
 
+        Utility.clearConsole();
         System.out.println("Driver Found!");
         System.out.println("----------------------------------------");
         System.out.println(assignedDriver.toString());
@@ -185,6 +191,7 @@ public class Main {
 
         System.out.println("\nDriver has arrived!");
         
+        Utility.clearConsole();
         System.out.println("\n--- Leave a Review ---");
         System.out.print("Please leave a rating for " + booking.getDriver().getName() + " (1-5 stars): ");
         int rating = 0;
@@ -225,6 +232,7 @@ public class Main {
             if (Utility.getIntInput(input) == 1) {
                 passengerAccounts.remove(passenger);
                 System.out.println("Account deleted successfully.");
+                Utility.clearConsole();
                 System.out.println("Whoa, we just had the ride of our life together!");
                 System.out.println("Maybe we'll see you again soon when you have a ride with JavaRide!");
                 System.out.print("Press Enter to exit the application...");
