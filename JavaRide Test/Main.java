@@ -160,6 +160,7 @@ public class Main {
     }
 
     private static void simulateTrip(Booking booking) {
+        Utility.clearConsole();
         System.out.println("\n--- Trip in Progress ---");
         for (int progress = 0; progress <= 100; progress += 20) {
             System.out.println("Trip Progress: " + progress + "%");
@@ -203,6 +204,7 @@ public class Main {
     }
 
     private static void viewPassengerProfile(Passenger passenger) {
+        Utility.clearConsole();
         System.out.println("\n--- My Profile ---");
         System.out.println(passenger.toString());
 
@@ -272,6 +274,7 @@ public class Main {
     }
 
     private static Driver registerDriver() {
+        Utility.clearConsole();
         System.out.println("\n--- New Driver Registration ---");
     
         System.out.print("Name: ");
