@@ -11,6 +11,10 @@ public class Review {
         this.comment = comment;
     }
 
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
     public Driver getDriver() {
         return driver;
     }
@@ -25,6 +29,6 @@ public class Review {
 
     @Override
     public String toString() {
-        return String.format("Rating: %d/5 - \"%s\"", rating, comment);
+        return String.format("From: %s | Rating: %d/5 - \"%s\"", passenger.getName(), rating, comment);
     }
 }
