@@ -20,6 +20,7 @@ public class Main {
 
         boolean isRunning = true;
         while (isRunning) {
+            Utility.clearConsole();
             System.out.println("\nYour Journey Starts Here 🛤️");
             System.out.println("\nPlease select your Account Type:");
             System.out.println("[1] I'm a Passenger");
@@ -59,6 +60,7 @@ public class Main {
 
         boolean passengerSession = true;
         while (passengerSession) {
+            Utility.clearConsole();
             System.out.println("\n--- Passenger Menu ---");
             System.out.println("[1] Book a Ride");
             System.out.println("[2] View My Profile & Booking History");
@@ -84,6 +86,7 @@ public class Main {
     }
 
     private static Passenger registerPassenger() {
+        Utility.clearConsole();
         System.out.println("\n--- New Passenger Registration ---");
     
         System.out.print("Name: ");
@@ -110,6 +113,7 @@ public class Main {
     }
 
     private static void bookARide(Passenger passenger) {
+        Utility.clearConsole();
         System.out.println("\n--- Book a New Ride ---");
 
         System.out.print("Enter number of passengers: ");
