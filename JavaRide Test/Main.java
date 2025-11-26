@@ -1,12 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
-    private static final Random random = new Random();
     private static final LocationManager locationManager = new LocationManager();
 
     private static final List<Passenger> passengerAccounts = new ArrayList<>();
@@ -126,7 +124,7 @@ public class Main {
         System.out.println("\nSelect a Vehicle Type:");
         VehicleType vehicleType = Utility.selectVehicleType(input);
 
-        System.out.println("\nSearching for a driver...");
+        Utility.showLoading("\n🚗💨 Searching for a driver...\n", 3);
         Driver assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, true);
 
         if (assignedDriver == null) {
@@ -299,7 +297,7 @@ public class Main {
             default: vehicle = new Normal(plateNumber);
         }
 
-        return new Driver(name, age, address, contactNumber, vehicle, bio);
+        return new Driver(name, age, address, contactNumber, vehicle, bio, 3.0);
     }
 
     private static void viewRideRequests(Driver driver) {
@@ -335,7 +333,7 @@ public class Main {
             selectedBooking.setDriver(driver);
             selectedBooking.confirmBooking();
             System.out.println("Ride Accepted! You will be notified upon passenger confirmation.");
-            Utility.showLoadingAnimation("Waiting for passenger confirmation...");
+            Utility.showLoading("Waiting for passenger confirmation...", 3);
             System.out.println("\nPassenger confirmed. Trip is starting.");
         } else {
             selectedBooking.setStatus(BookingStatus.CANCELLED); 
