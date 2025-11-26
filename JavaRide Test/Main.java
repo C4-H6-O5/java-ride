@@ -253,6 +253,7 @@ public class Main {
 
         boolean driverSession = true;
         while (driverSession) {
+            Utility.clearConsole();
             System.out.println("\n--- Driver Menu ---");
             System.out.println("[1] View Ride Requests");
             System.out.println("[2] View My Booking History");
