@@ -5,9 +5,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public final class Utility {
-
     private static final Random random = new Random();
-
     private Utility() {}
 
     public static int getIntInput(Scanner input) {
@@ -18,6 +16,28 @@ public final class Utility {
                 System.out.print("Invalid input. Please enter a number: ");
             }
         }
+    }
+
+    public static void clearConsole() {
+        try {
+            String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            // Handle exceptions, e.g., by printing new lines as a fallback
+            for (int i = 0; i < 50; ++i) System.out.println();
+        }
+    }
+
+    public static void welcomePrompt(Scanner input, String name) {
+        System.out.println("\nAll set! Let's hit the road, " + name + "!");
+        System.out.print("Press 'Enter' to go to the Home Page! ");
+        input.nextLine();
     }
 
     public static LocationManager.Location selectLocation(Scanner input, LocationManager locationManager, LocationManager.Location locationToExclude) {
@@ -84,12 +104,6 @@ public final class Utility {
             return null;
         }
         return suitableDrivers.get(random.nextInt(suitableDrivers.size()));
-    }
-
-    public static void welcomePrompt(Scanner input, String name) {
-        System.out.println("\nAll set! Let's hit the road, " + name + "!");
-        System.out.print("Press 'Enter' to go to the Home Page! ");
-        input.nextLine();
     }
 
     public static void showLoading(String task, int duration) {
