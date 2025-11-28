@@ -133,7 +133,7 @@ public final class Utility {
                     }
                 }
 
-                System.out.print("\r" + GREEN + bar.toString() + " " + i + "%" + RESET);
+                System.out.print("\r" + GREEN + bar.toString() + " " + i + "% " + RESET);
                 
                 Thread.sleep(sleepTime);
             }
