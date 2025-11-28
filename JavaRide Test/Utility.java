@@ -94,13 +94,13 @@ public final class Utility {
         }
     }
 
-    public static Driver findRandomDriver(VehicleType type, List<Driver> driverAccounts, boolean showLoading) {
+    public static Driver findRandomDriver(VehicleType type, List<Driver> driverAccounts, List<Driver> driversToExclude) {
         List<Driver> suitableDrivers = driverAccounts.stream()
             .filter(d -> d.getVehicle().getVehicleType() == type)
+            .filter(d -> driversToExclude == null || !driversToExclude.contains(d))
             .collect(Collectors.toList());
 
         if (suitableDrivers.isEmpty()) {
-            System.out.println(); 
             return null;
         }
         return suitableDrivers.get(random.nextInt(suitableDrivers.size()));
