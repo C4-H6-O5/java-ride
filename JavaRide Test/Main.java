@@ -21,7 +21,7 @@ public class Main {
         boolean isRunning = true;
         while (isRunning) {
             Utility.clearConsole();
-            System.out.println("\nYour Journey Starts Here 🛤️");
+            System.out.println("Your Journey Starts Here 🛤️");
             System.out.println("\nPlease select your Account Type:");
             System.out.println("[1] I'm a Passenger");
             System.out.println("[2] I'm a Driver");
@@ -61,7 +61,7 @@ public class Main {
         boolean passengerSession = true;
         while (passengerSession) {
             Utility.clearConsole();
-            System.out.println("\n--- Passenger Menu ---");
+            System.out.println("--- Passenger Menu ---");
             System.out.println("[1] Book a Ride");
             System.out.println("[2] View My Profile & Booking History");
             System.out.println("[3] Logout");
@@ -87,7 +87,7 @@ public class Main {
 
     private static Passenger registerPassenger() {
         Utility.clearConsole();
-        System.out.println("\n--- New Passenger Registration ---");
+        System.out.println("--- New Passenger Registration ---");
     
         System.out.print("Name: ");
         String name = input.nextLine();
@@ -114,25 +114,25 @@ public class Main {
 
     private static void bookARide(Passenger passenger) {
         Utility.clearConsole();
-        System.out.println("\n--- Book a New Ride ---");
+        System.out.println("--- Book a New Ride ---");
 
         System.out.print("Enter number of passengers: ");
         int numPassengers = Utility.getIntInput(input);
 
         Utility.clearConsole();
-        System.out.println("\nSelect a Pickup Point:");
+        System.out.println("Select a Pickup Point:");
         LocationManager.Location pickupPoint = Utility.selectLocation(input, locationManager, null);
 
         Utility.clearConsole();
-        System.out.println("\nSelect a Drop-off Point:");
+        System.out.println("Select a Drop-off Point:");
         LocationManager.Location dropOffPoint = Utility.selectLocation(input, locationManager, pickupPoint);
 
         Utility.clearConsole();
-        System.out.println("\nSelect a Vehicle Type:");
+        System.out.println("Select a Vehicle Type:");
         VehicleType vehicleType = Utility.selectVehicleType(input);
 
         Utility.clearConsole();
-        Utility.showLoading("\n🚗💨 Searching for a driver...\n", 3);
+        Utility.showLoading("🚗💨 Searching for a driver...\n", 3);
         Driver assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, true);
 
         if (assignedDriver == null) {
@@ -167,7 +167,7 @@ public class Main {
 
     private static void simulateTrip(Booking booking) {
         Utility.clearConsole();
-        System.out.println("\n--- Trip in Progress ---");
+        System.out.println("--- Trip in Progress ---");
         for (int progress = 0; progress <= 100; progress += 20) {
             System.out.println("Trip Progress: " + progress + "%");
 
@@ -192,7 +192,7 @@ public class Main {
         System.out.println("\nDriver has arrived!");
         
         Utility.clearConsole();
-        System.out.println("\n--- Leave a Review ---");
+        System.out.println("--- Leave a Review ---");
         System.out.print("Please leave a rating for " + booking.getDriver().getName() + " (1-5 stars): ");
         int rating = 0;
         while (rating < 1 || rating > 5) {
@@ -212,7 +212,7 @@ public class Main {
 
     private static void viewPassengerProfile(Passenger passenger) {
         Utility.clearConsole();
-        System.out.println("\n--- My Profile ---");
+        System.out.println("--- My Profile ---");
         System.out.println(passenger.toString());
 
         System.out.println("\n--- My Booking History ---");
@@ -254,7 +254,7 @@ public class Main {
         boolean driverSession = true;
         while (driverSession) {
             Utility.clearConsole();
-            System.out.println("\n--- Driver Menu ---");
+            System.out.println("--- Driver Menu ---");
             System.out.println("[1] View Ride Requests");
             System.out.println("[2] View My Booking History");
             System.out.println("[3] View My Earnings");
@@ -284,7 +284,7 @@ public class Main {
 
     private static Driver registerDriver() {
         Utility.clearConsole();
-        System.out.println("\n--- New Driver Registration ---");
+        System.out.println("--- New Driver Registration ---");
     
         System.out.print("Name: ");
         String name = input.nextLine();
@@ -302,7 +302,7 @@ public class Main {
         String bio = input.nextLine();
 
         Utility.clearConsole();
-        System.out.println("\n--- Vehicle Details ---");
+        System.out.println("--- Vehicle Details ---");
         System.out.print("Enter your vehicle's Plate Number: ");
         String plateNumber = input.nextLine();
         VehicleType type = Utility.selectVehicleType(input);
@@ -319,7 +319,7 @@ public class Main {
 
     private static void viewRideRequests(Driver driver) {
         Utility.clearConsole();
-        System.out.println("\n--- Pending Ride Requests ---");
+        System.out.println("--- Pending Ride Requests ---");
         List<Booking> pendingRequests = allBookings.stream()
             .filter(b -> b.getStatus() == BookingStatus.PENDING && b.getVehicle().getVehicleType() == driver.getVehicle().getVehicleType())
             .collect(Collectors.toList());
@@ -341,7 +341,7 @@ public class Main {
 
         Booking selectedBooking = pendingRequests.get(choice - 1);
         Utility.clearConsole();
-        System.out.println("\n--- Request Details ---");
+        System.out.println("--- Request Details ---");
         System.out.println("Pickup: " + selectedBooking.getPickupPoint().getName());
         System.out.println("Drop Off: " + selectedBooking.getDropOffPoint().getName());
         System.out.println("Distance: " + selectedBooking.getDistance() + " km");
@@ -364,7 +364,7 @@ public class Main {
 
     private static void viewDriverBookingHistory(Driver driver) {
         Utility.clearConsole();
-        System.out.println("\n--- My Booking History ---");
+        System.out.println("--- My Booking History ---");
         List<Booking> myRides = allBookings.stream()
             .filter(b -> driver.equals(b.getDriver()))
             .collect(Collectors.toList());
@@ -395,7 +395,7 @@ public class Main {
 
     private static void viewDriverEarnings(Driver driver) {
         Utility.clearConsole();
-        System.out.println("\n--- My Earnings ---");
+        System.out.println("--- My Earnings ---");
         double totalEarnings = allBookings.stream()
             .filter(b -> driver.equals(b.getDriver()) && b.getStatus() == BookingStatus.ACCEPTED)
             .mapToDouble(Booking::getAmount)
