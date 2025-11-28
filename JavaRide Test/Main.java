@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.io.IOException;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
@@ -167,32 +168,71 @@ public class Main {
 
     private static void simulateTrip(Booking booking) {
         Utility.clearConsole();
-        System.out.println("--- Trip in Progress ---");
-        for (int progress = 0; progress <= 100; progress += 20) {
-            System.out.println("Trip Progress: " + progress + "%");
+        System.out.println("Waiting for driver to arrive...");
+        System.out.println("(!) Press [ENTER] to cancel (valid below 50%)\n");
 
-            if (progress < 50) {
-                System.out.print("Do you want to cancel the ride? [1] Yes [2] No: ");
-                if (Utility.getIntInput(input) == 1) {
-                    System.out.print("Confirm cancellation? [1] Yes [2] No: ");
-                    if (Utility.getIntInput(input) == 1) {
-                        booking.cancelBooking();
-                        System.out.println("Booking has been cancelled.");
-                        return;
+        int totalTime = 100; 
+        String GREEN = "\u001B[32m";
+        String RESET = "\u001B[0m";
+
+        try {
+            for (int progress = 0; progress <= 100; progress++) {
+                if (progress == 80) {
+                    System.out.print("\r                                                  \r");
+                    System.out.println("[!] New Message from Driver: \"I'm on my way!\"\n");
+                }
+
+                int barLength = 30;
+                int filledLength = (progress * barLength) / 100;
+                StringBuilder bar = new StringBuilder();
+                for (int b = 0; b < barLength; b++) {
+                    if (b < filledLength) bar.append("█");
+                    else bar.append("░");
+                }
+                
+                System.out.print("\r" + GREEN + "Trip Progress: " + bar + " " + progress + "% " + RESET);
+
+                if (progress < 50) {
+                    if (System.in.available() > 0) {
+                        while(System.in.available() > 0) {
+                            System.in.read();
+                        }
+
+                        System.out.println("\n--- PAUSED ---"); 
+                        System.out.print("Do you want to cancel the ride? [1] Yes [2] No: ");
+                        
+                        int choice = Utility.getIntInput(input);
+
+                        if (choice == 1) {
+                            System.out.print("Confirm cancellation? [1] Yes [2] No: ");
+                            if (Utility.getIntInput(input) == 1) {
+                                booking.cancelBooking();
+                                System.out.println("\n[!] Booking has been cancelled.");
+                                return;
+                            }
+                        }
+                        Utility.clearConsole();
+                        System.out.println("Waiting for driver to arrive...");
+                        System.out.println("(!) Press [ENTER] to cancel (valid below 50%)\n");
                     }
                 }
-            }
 
-            if (progress >= 80) {
-                System.out.println("Driver Message: \"I'm on my way!\"");
+                Thread.sleep(100); 
             }
-            try { Thread.sleep(1000); } catch (InterruptedException e) {}
+            
+            System.out.print("\n\nDriver has arrived! Click 'Enter' to hop in the vehicle and start the trip. ");
+            // add graphics here
+            input.nextLine();
+
+            Utility.clearConsole();
+            Utility.showLoading("Traveling to desination...\n", 6);
+        } catch (Exception e) {
+            System.out.println("Error in trip simulation.");
         }
-
-        System.out.println("\nDriver has arrived!");
         
         Utility.clearConsole();
-        System.out.println("--- Leave a Review ---");
+        System.out.println("You have arrived at your destination. Thank you for having a ride with JavaRide!");
+        System.out.println("\n--- Leave a Review ---");
         System.out.print("Please leave a rating for " + booking.getDriver().getName() + " (1-5 stars): ");
         int rating = 0;
         while (rating < 1 || rating > 5) {
@@ -208,6 +248,8 @@ public class Main {
         Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
         booking.getDriver().addReview(review);
         System.out.println("Thank you for your feedback!");
+        System.out.print("Press 'Enter' to return to Menu ");
+        input.nextLine();
     }
 
     private static void viewPassengerProfile(Passenger passenger) {
