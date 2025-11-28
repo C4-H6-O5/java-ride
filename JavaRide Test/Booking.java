@@ -53,12 +53,11 @@ public class Booking {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n=== Booking Details ===\n");
         sb.append("Passenger: ").append(passenger.getName()).append("\n");
         
         sb.append("Driver: ");
         if (driver != null) {
-            sb.append(driver.getName()).append(" | Rating: ").append(String.format("%.1f⭐", driver.getRating())).append("\n");
+            sb.append(driver.getName()).append(" | Rating: ").append(String.format("%.1f ⭐", driver.getRating())).append("\n");
         } else {
             sb.append("Not assigned yet\n");
         }
