@@ -134,44 +134,72 @@ public class Main {
 
         Utility.clearConsole();
         Utility.showLoading("🚗💨 Searching for a driver...\n", 3);
-        Driver assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, true);
+        
+        List<Driver> excludedDrivers = new ArrayList<>();
+        Driver assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
 
         if (assignedDriver == null) {
             Utility.clearConsole();
             System.out.println("Sorry, no " + vehicleType + " drivers are available right now. Please try again later.");
             return;
         }
+        
+        boolean bookingSuccessful = false;
+        while (!bookingSuccessful) {
+            Utility.clearConsole();
+            System.out.println("Driver Found!");
+            System.out.println("----------------------------------------");
+            System.out.println(assignedDriver.toString());
+            System.out.println("----------------------------------------");
+            System.out.print("Do you want to [1] Confirm or [2] Reject this driver? ");
+            int confirmChoice = Utility.getIntInput(input);
 
-        Utility.clearConsole();
-        System.out.println("Driver Found!");
-        System.out.println("----------------------------------------");
-        System.out.println(assignedDriver.toString());
-        System.out.println("----------------------------------------");
-        System.out.print("Do you want to [1] Confirm or [2] Reject this driver? ");
-        int confirmChoice = Utility.getIntInput(input);
-
-        if (confirmChoice != 1) {
-            System.out.println("Booking rejected. Returning to menu.");
-            return;
+            if (confirmChoice != 1) {
+                excludedDrivers.add(assignedDriver);
+                Utility.clearConsole();
+                System.out.println("Driver rejected. Finding another one for you.");
+                Utility.showLoading("🚗💨 Searching for another driver...\n", 3);
+                assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
+                if (assignedDriver == null) {
+                    System.out.println("Sorry, no other drivers are available right now. Please try again later.");
+                    System.out.print("Press 'Enter' to return to the menu.");
+                    input.nextLine();
+                    return;
+                }
+                continue; 
+            }
+    
+            Booking booking = new Booking(passenger, pickupPoint, dropOffPoint, assignedDriver.getVehicle(), numPassengers);
+            booking.setDriver(assignedDriver);
+            booking.confirmBooking();
+            allBookings.add(booking);
+    
+            System.out.println("\nBooking Confirmed!");
+            System.out.printf("Total Amount to be Paid: Php %.2f\n", booking.getAmount());
+    
+            if (simulateTrip(booking, excludedDrivers)) {
+                excludedDrivers.add(assignedDriver);
+                Utility.clearConsole();
+                Utility.showLoading("🚗💨 Searching for another driver...\n", 3);
+                assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
+                 if (assignedDriver == null) {
+                    Utility.clearConsole();
+                    System.out.println("Sorry, no other " + vehicleType + " drivers are available right now. Please try again later.");
+                    return;
+                }
+                continue;
+            } else {
+                bookingSuccessful = true; 
+                return; 
+            }
         }
-
-        Booking booking = new Booking(passenger, pickupPoint, dropOffPoint, assignedDriver.getVehicle(), numPassengers);
-        booking.setDriver(assignedDriver);
-        booking.confirmBooking();
-        allBookings.add(booking);
-
-        System.out.println("\nBooking Confirmed!");
-        System.out.printf("Total Amount to be Paid: Php %.2f\n", booking.getAmount());
-
-        simulateTrip(booking);
     }
 
-    private static void simulateTrip(Booking booking) {
+    private static boolean simulateTrip(Booking booking, List<Driver> excludedDrivers) {
         Utility.clearConsole();
         System.out.println("Waiting for driver to arrive...");
         System.out.println("(!) Press [ENTER] to cancel (valid below 50%)\n");
 
-        int totalTime = 100; 
         String GREEN = "\u001B[32m";
         String RESET = "\u001B[0m";
 
@@ -208,7 +236,13 @@ public class Main {
                             if (Utility.getIntInput(input) == 1) {
                                 booking.cancelBooking();
                                 System.out.println("\n[!] Booking has been cancelled.");
-                                return;
+                                System.out.print("Would you like to find another driver? [1] Yes [2] No, return to menu: ");
+                                if (Utility.getIntInput(input) == 1) {
+                                    return true; 
+                                } else {
+                                    System.out.println("Returning to menu...");
+                                    return false; 
+                                }
                             }
                         }
                         Utility.clearConsole();
@@ -250,6 +284,7 @@ public class Main {
         System.out.println("Thank you for your feedback!");
         System.out.print("Press 'Enter' to return to Menu ");
         input.nextLine();
+        return false; 
     }
 
     private static void viewPassengerProfile(Passenger passenger) {
