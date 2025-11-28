@@ -150,6 +150,12 @@ public class Main {
             System.out.println("Driver Found!");
             System.out.println("----------------------------------------");
             System.out.println(assignedDriver.toString());
+            
+            Vehicle vehicle = assignedDriver.getVehicle();
+            double distance = Math.abs(pickupPoint.getValue() - dropOffPoint.getValue());
+            double fare = vehicle.calculateFare(distance);
+            System.out.printf("Estimated Fare: Php %.2f\n", fare);
+
             System.out.println("----------------------------------------");
             System.out.print("Do you want to [1] Confirm or [2] Reject this driver? ");
             int confirmChoice = Utility.getIntInput(input);
@@ -162,7 +168,7 @@ public class Main {
                 assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
                 if (assignedDriver == null) {
                     System.out.println("Sorry, no other drivers are available right now. Please try again later.");
-                    System.out.print("Press 'Enter' to return to the menu.");
+                    System.out.print("Press 'Enter' to return to the Menu.");
                     input.nextLine();
                     return;
                 }
@@ -236,11 +242,11 @@ public class Main {
                             if (Utility.getIntInput(input) == 1) {
                                 booking.cancelBooking();
                                 System.out.println("\n[!] Booking has been cancelled.");
-                                System.out.print("Would you like to find another driver? [1] Yes [2] No, return to menu: ");
+                                System.out.print("Would you like to find another driver? [1] Yes [2] No, return to Menu: ");
                                 if (Utility.getIntInput(input) == 1) {
                                     return true; 
                                 } else {
-                                    System.out.println("Returning to menu...");
+                                    System.out.println("Returning to Menu...");
                                     return false; 
                                 }
                             }
@@ -281,40 +287,60 @@ public class Main {
 
         Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
         booking.getDriver().addReview(review);
-        System.out.println("Thank you for your feedback!");
-        System.out.print("Press 'Enter' to return to Menu ");
+        System.out.println("\nThank you for your feedback! Press 'Enter' to return to Menu.");
         input.nextLine();
         return false; 
     }
 
     private static void viewPassengerProfile(Passenger passenger) {
-        Utility.clearConsole();
-        System.out.println("--- My Profile ---");
-        System.out.println(passenger.toString());
-
-        System.out.println("\n--- My Booking History ---");
-        List<Booking> myBookings = allBookings.stream()
-            .filter(b -> b.getPassenger().equals(passenger))
-            .collect(Collectors.toList());
-
-        if (myBookings.isEmpty()) {
-            System.out.println("You have no booking history.");
-        } else {
-            myBookings.forEach(b -> System.out.println(b.toString()));
-        }
-
-        System.out.print("\nDo you want to [1] Delete Account or [2] Return to Menu? ");
-        if (Utility.getIntInput(input) == 1) {
-            System.out.print("Are you sure you want to delete your account permanently? [1] Yes [2] No: ");
-            if (Utility.getIntInput(input) == 1) {
-                passengerAccounts.remove(passenger);
-                System.out.println("Account deleted successfully.");
-                Utility.clearConsole();
-                System.out.println("Whoa, we just had the ride of our life together!");
-                System.out.println("Maybe we'll see you again soon when you have a ride with JavaRide!");
-                System.out.print("Press Enter to exit the application...");
-                input.nextLine(); 
-                System.exit(0);  
+        while (true) {
+            Utility.clearConsole();
+            System.out.println("--- My Profile ---");
+            System.out.println(passenger.toString());
+    
+            System.out.println("\n[1] View Booking History");
+            System.out.println("[2] Delete Account");
+            System.out.println("[3] Return to Menu");
+            System.out.print("Select an option: ");
+            int choice = Utility.getIntInput(input);
+    
+            switch (choice) {
+                case 1:
+                    Utility.clearConsole();
+                    System.out.println("-------- My Booking History --------");
+                    List<Booking> myBookings = allBookings.stream()
+                        .filter(b -> b.getPassenger().equals(passenger))
+                        .collect(Collectors.toList());
+    
+                    if (myBookings.isEmpty()) {
+                        System.out.println("You have no booking history.");
+                    } else {
+                        for (int i = 0; i < myBookings.size(); i++) {
+                            System.out.printf("\n======= Booking History %03d =======\n", i + 1);
+                            System.out.println(myBookings.get(i).toString());
+                            System.out.print("===================================\n");
+                        }
+                    }
+                    System.out.print("\nPress 'Enter' to return to your profile...");
+                    input.nextLine();
+                    break; 
+                case 2:
+                    System.out.print("Are you sure you want to delete your account permanently? [1] Yes [2] No: ");
+                    if (Utility.getIntInput(input) == 1) {
+                        passengerAccounts.remove(passenger);
+                        System.out.println("Account deleted successfully.");
+                        Utility.clearConsole();
+                        System.out.println("Whoa, we just had the ride of our life together!");
+                        System.out.println("Maybe we'll see you again soon when you have a ride with JavaRide!");
+                        System.out.print("Press Enter to exit the application...");
+                        input.nextLine(); 
+                        System.exit(0);  
+                    }
+                    break; 
+                case 3:
+                    return; 
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
     }
