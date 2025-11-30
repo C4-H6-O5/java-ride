@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         driverAccounts.addAll(DataGenerator.generateDrivers(10));
-        allBookings.addAll(DataGenerator.generateBookings(5, locationManager)); // Generate initial bookings
+        allBookings.addAll(DataGenerator.generateBookings(5, locationManager));
 
         System.out.println("Hello! Welcome to the JavaRide app 🛺");
         System.out.print("New to JavaRide? Press 'Enter' to Sign Up! ");
@@ -166,14 +166,15 @@ public class Main {
                 excludedDrivers.add(assignedDriver);
                 Utility.clearConsole();
                 System.out.println("Driver rejected. Finding another one for you.");
-                Utility.showLoading("🚗💨 Searching for another driver...\n", 3);
-                assignedDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
-                if (assignedDriver == null) {
+                Utility.showLoading("🚗💨 Searching for another driver...\n", 3);                
+                Driver nextDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
+                if (nextDriver == null) {
                     System.out.println("Sorry, no other drivers are available right now. Please try again later.");
                     System.out.print("Press 'Enter' to return to the Menu.");
                     input.nextLine();
                     return;
                 }
+                assignedDriver = nextDriver;
                 continue; 
             }
     
@@ -193,7 +194,9 @@ public class Main {
                  if (assignedDriver == null) {
                     Utility.clearConsole();
                     System.out.println("Sorry, no other " + vehicleType + " drivers are available right now. Please try again later.");
-                    return;
+                    System.out.print("Press 'Enter' to return to the Menu.");
+                    input.nextLine();
+                    break; 
                 }
                 continue;
             } else {
@@ -234,33 +237,28 @@ public class Main {
                             System.in.read();
                         }
 
-                        if (System.in.available() > 0 && input.hasNextLine()) {
-                            System.out.println("\n--- PAUSED ---"); 
-                            System.out.print("Do you want to cancel the ride? [1] Yes [2] No: ");
-                            
-                            int choice = Utility.getIntInput(input);
+                        System.out.println("\n--- PAUSED ---"); 
+                        System.out.print("Do you want to cancel the ride? [1] Yes [2] No: ");
+                        
+                        int choice = Utility.getIntInput(input);
 
-                            if (choice == 1) {
-                                System.out.print("Confirm cancellation? [1] Yes [2] No: ");
+                        if (choice == 1) {
+                            System.out.print("Confirm cancellation? [1] Yes [2] No: ");
+                            if (Utility.getIntInput(input) == 1) {
+                                booking.cancelBooking();
+                                System.out.println("\n[!] Booking has been cancelled.");
+                                System.out.print("Would you like to find another driver? [1] Yes [2] No, return to Menu: ");
                                 if (Utility.getIntInput(input) == 1) {
-                                    booking.cancelBooking();
-                                    System.out.println("\n[!] Booking has been cancelled.");
-                                    System.out.print("Would you like to find another driver? [1] Yes [2] No, return to Menu: ");
-                                    if (Utility.getIntInput(input) == 1) {
-                                        return true; 
-                                    } else {
-                                        System.out.println("Returning to Menu...");
-                                        return false; 
-                                    }
+                                    return true; 
+                                } else {
+                                    System.out.println("Returning to Menu...");
+                                    return false; 
                                 }
                             }
-                            // Clear the buffer if user just pressed enter without a choice
-                            if(input.hasNextLine()) input.nextLine();
-
-                            Utility.clearConsole();
-                            System.out.println("Waiting for driver to arrive...");
-                            System.out.println("(!) Press [ENTER] to cancel (valid below 50%)\n");
                         }
+                        Utility.clearConsole();
+                        System.out.println("Waiting for driver to arrive...");
+                        System.out.println("(!) Press [ENTER] to cancel (valid below 50%)\n");
                     }
                 }
 
@@ -324,7 +322,7 @@ public class Main {
                     } else {
                         for (int i = 0; i < myBookings.size(); i++) {
                             System.out.printf("\n======= Booking History %03d =======\n", i + 1);
-                            System.out.println(myBookings.get(i).toPassengerString());
+                            System.out.println(myBookings.get(i).toString());
                             System.out.print("===================================\n");
                         }
                     }
@@ -368,7 +366,7 @@ public class Main {
             System.out.println("[1] View Ride Requests");
             System.out.println("[2] View My Booking History");
             System.out.println("[3] View My Profile");
-            System.out.println("[4] Logout"); // Logout
+            System.out.println("[4] Logout");
             System.out.print("Select an option: ");
             int choice = Utility.getIntInput(input);
 
@@ -396,7 +394,7 @@ public class Main {
         while (true) {
             Utility.clearConsole();
             System.out.println("--- My Profile ---");
-            System.out.println(driver.toString()); // Display driver's base info
+            System.out.println(driver.toString());
 
             System.out.println("\n[1] View Average Rating from Passengers");
             System.out.println("[2] View My Earnings");
@@ -422,7 +420,7 @@ public class Main {
                     viewDriverEarnings(driver);
                     break;
                 case 3:
-                    return; // Return to the main driver menu
+                    return; 
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -485,15 +483,14 @@ public class Main {
                 System.out.println("No pending ride requests available for your vehicle type.");
                 System.out.print("Would you like to [1] Search Again or [2] Return to Menu? ");
                 if (Utility.getIntInput(input) == 1) {
-                    // Increase the number of generated bookings to raise the chance of a match
-                    allBookings.addAll(DataGenerator.generateBookings(random.nextInt(4) + 3, locationManager)); // Generates 3 to 6 new bookings
+                    allBookings.addAll(DataGenerator.generateBookings(random.nextInt(4) + 3, locationManager));
                     Utility.showLoading("Searching for new ride requests...", 2);
                 } else {
-                    return; // Exit to the driver menu
+                    return;
                 }
             } else {
                 selectAndProcessRideRequest(driver);
-                return; // After processing a request, return to the main driver menu.
+                return;
             }
         }
     }
@@ -528,12 +525,12 @@ public class Main {
         System.out.print("\nDo you want to [1] Accept or [2] Decline this ride? ");
         if (Utility.getIntInput(input) == 1) {
             selectedBooking.setDriver(driver);
-            selectedBooking.setVehicle(driver.getVehicle()); // Assign driver's actual vehicle
+            selectedBooking.setVehicle(driver.getVehicle());
             selectedBooking.confirmBooking();
             System.out.println("\nRide Accepted! Please proceed to the pickup location.");
             simulateDriverTrip(selectedBooking);
         } else {
-            selectedBooking.setDriver(driver); // Assign driver first to log the decline
+            selectedBooking.setDriver(driver); 
             selectedBooking.setStatus(BookingStatus.CANCELLED);
             System.out.print("Enter a short message for declining (e.g., 'Too far'): ");
             String declineMsg = input.nextLine();
@@ -555,14 +552,11 @@ public class Main {
         Utility.showLoading("Trip to destination in progress...", 6);
         System.out.println("You have arrived at the destination. The ride is complete!");
 
-        // --- Refresh the pending bookings list ---
-        // It doesn't make sense for old requests to still be there after a trip.
-        // This simulates the passage of time by clearing old pending requests and creating new ones.
         allBookings.removeIf(b -> b.getStatus() == BookingStatus.PENDING);
-        allBookings.addAll(DataGenerator.generateBookings(5, locationManager)); // Generate a fresh batch of requests
+        allBookings.addAll(DataGenerator.generateBookings(5, locationManager)); 
 
         if (random.nextBoolean()) {
-            int rating = 3 + random.nextInt(3); // Generates a rating of 3, 4, or 5
+            int rating = 3 + random.nextInt(3); 
             String comment = DataGenerator.getRandomReviewComment();
             Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
             booking.getDriver().addReview(review);
@@ -609,11 +603,11 @@ public class Main {
                     else reviews.forEach(r -> System.out.println("- " + r.toString()));
                     break;
                 case 4:
-                    return; // Return to the main driver menu
+                    return; 
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     Utility.showLoading("Returning...", 1);
-                    continue; // Skip the "Press Enter" prompt for invalid choices
+                    continue;
             }
 
             System.out.print("\nPress 'Enter' to return to the history menu.");
@@ -634,7 +628,6 @@ public class Main {
         if (totalEarnings > 0) {
             System.out.print("\nDo you want to [1] Cash Out or [2] Return to Menu? ");
             if (Utility.getIntInput(input) == 1) {
-                // Find all unpaid bookings and mark them as paid out
                 allBookings.stream()
                     .filter(b -> driver.equals(b.getDriver()) && b.getStatus() == BookingStatus.ACCEPTED && !b.isPaidOut())
                     .forEach(b -> b.setPaidOut(true));
