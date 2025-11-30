@@ -553,7 +553,7 @@ public class Main {
             selectedBooking.setDriver(driver);
             selectedBooking.setVehicle(driver.getVehicle());
             selectedBooking.confirmBooking();
-            System.out.println("\nRide Accepted! Click 'Enter' to proceed to the pickup location.");
+            System.out.print("\nRide Accepted! Click 'Enter' to proceed to the pickup location.");
             input.nextLine();
             Utility.clearConsole();
             simulateDriverTrip(selectedBooking);
@@ -569,7 +569,7 @@ public class Main {
     }
 
     private static void simulateDriverTrip(Booking booking) {
-        Utility.showLoading("Driving to pickup location: " + booking.getPickupPoint().getName(), 4);
+        Utility.showLoading("Driving to pickup location: " + booking.getPickupPoint().getName() + "\n", 4);
         
         Utility.clearConsole();
         System.out.println("You have arrived at the pickup location!");
