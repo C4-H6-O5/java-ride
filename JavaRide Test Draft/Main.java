@@ -147,6 +147,7 @@ public class Main {
         }
         
         boolean bookingSuccessful = false;
+        int cancellationCount = 0;
         while (!bookingSuccessful) {
             Utility.clearConsole();
             System.out.println("Driver Found!");
@@ -163,6 +164,15 @@ public class Main {
             int confirmChoice = Utility.getIntInput(input);
 
             if (confirmChoice != 1) {
+                cancellationCount++;
+                if (cancellationCount >= 3) {
+                    Utility.clearConsole();
+                    System.out.println("You have reached the maximum number of cancellations for this booking.");
+                    System.out.println("Please start a new booking if you wish to find a ride.");
+                    System.out.print("Press 'Enter' to return to the Menu.");
+                    input.nextLine();
+                    return;
+                }
                 excludedDrivers.add(assignedDriver);
                 Utility.clearConsole();
                 System.out.println("Driver rejected. Finding another one for you.");
@@ -187,6 +197,15 @@ public class Main {
             System.out.printf("Total Amount to be Paid: Php %.2f\n", booking.getAmount());
     
             if (simulateTrip(booking, excludedDrivers)) {
+                cancellationCount++;
+                if (cancellationCount >= 3) {
+                    Utility.clearConsole();
+                    System.out.println("You have reached the maximum number of cancellations for this booking.");
+                    System.out.println("Please start a new booking if you wish to find a ride.");
+                    System.out.print("\nPress 'Enter' to return to the Menu. ");
+                    input.nextLine();
+                    return;
+                }
                 excludedDrivers.add(assignedDriver);
                 Utility.clearConsole();
                 Utility.showLoading("🚗💨 Searching for another driver...\n", 3);
