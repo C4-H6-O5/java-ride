@@ -23,7 +23,7 @@ public abstract class Vehicle {
 
 class Motorcycle extends Vehicle {
     public Motorcycle(String plateNumber) {
-        super(plateNumber, 10.0, VehicleType.MOTORCYCLE);
+        super(plateNumber, 6.0, VehicleType.MOTORCYCLE);
     }
 
     @Override
@@ -34,22 +34,22 @@ class Motorcycle extends Vehicle {
 
 class Normal extends Vehicle {
     public Normal(String plateNumber) {
-        super(plateNumber, 25.0, VehicleType.NORMAL);
+        super(plateNumber, 12.0, VehicleType.NORMAL);
     }
 
     @Override
     public double calculateFare(double distance) {
-        return getBaseFare() * distance + 10;
+        return getBaseFare() * distance + 5;
     }
 }
 
 class Premium extends Vehicle {
     public Premium(String plateNumber) {
-        super(plateNumber, 25.0, VehicleType.PREMIUM);
+        super(plateNumber, 18.0, VehicleType.PREMIUM);
     }
 
     @Override
     public double calculateFare(double distance) {
-        return getBaseFare() * distance + 30;
+        return getBaseFare() * distance + 15;
     }
 }

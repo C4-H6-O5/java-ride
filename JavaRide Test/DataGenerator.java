@@ -37,6 +37,14 @@ public class DataGenerator {
         "Top-rated driver with luxury vehicle."
     };
     
+    private static String[] reviewComments = {
+        "Great ride, very smooth and safe.",
+        "The driver was very friendly and professional.",
+        "Clean car and a very comfortable trip. Highly recommended!",
+        "Got me to my destination quickly. Thanks!",
+        "A pleasant and enjoyable journey."
+    };
+
     // Generate random phone number
     private static String generatePhoneNumber() {
         return "09" + (100000000 + random.nextInt(900000000));
@@ -110,5 +118,34 @@ public class DataGenerator {
             passengers.add(generatePassenger());
         }
         return passengers;
+    }
+
+    public static List<Booking> generateBookings(int count, LocationManager locationManager) {
+        List<Booking> bookings = new ArrayList<>();
+        List<Passenger> mockPassengers = generatePassengers(count);
+        List<LocationManager.Location> locations = locationManager.getLocations();
+        int numLocations = locations.size();
+
+        for (int i = 0; i < count; i++) {
+            Passenger p = mockPassengers.get(i);
+            int numPassengers = 1;
+
+            // Select two different random locations
+            int pickupIndex = random.nextInt(numLocations);
+            int dropoffIndex;
+            do {
+                dropoffIndex = random.nextInt(numLocations);
+            } while (pickupIndex == dropoffIndex);
+
+            Vehicle tempVehicle = createRandomVehicle();
+            Booking booking = new Booking(p, locations.get(pickupIndex), locations.get(dropoffIndex), tempVehicle, numPassengers);
+            bookings.add(booking);
+        }
+        return bookings;
+    }
+
+    public static String getRandomReviewComment() {
+        if (reviewComments == null || reviewComments.length == 0) return "Good ride.";
+        return reviewComments[random.nextInt(reviewComments.length)];
     }
 }

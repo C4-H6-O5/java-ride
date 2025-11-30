@@ -111,8 +111,8 @@ public final class Utility {
         String RESET = "\u001B[0m";
         
         // SOLID BLOCKS
-        char FILL = '█'; 
-        char EMPTY = '░'; 
+        char FILL = '\u2588'; // Unicode for solid block
+        char EMPTY = '\u2591'; // Unicode for light shade
         
         int barLength = 30;
         long sleepTime = (duration * 1000) / 100;

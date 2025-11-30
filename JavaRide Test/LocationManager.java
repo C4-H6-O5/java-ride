@@ -28,14 +28,14 @@ public class LocationManager {
 
     private void initializeLocations() {
         locations.add(new Location("BatStateU Alangilan", 0));
-        locations.add(new Location("Grand terminal", 10));
-        locations.add(new Location("Don Ramos", 12));
-        locations.add(new Location("Capitolio", 15));
-        locations.add(new Location("Nuciti", 18));
-        locations.add(new Location("Plaza", 25));
-        locations.add(new Location("SM Mall", 25));
-        locations.add(new Location("BatStateU Pablo Borbon", 30));
-        locations.add(new Location("Batangas Pier", 35));
+        locations.add(new Location("Grand terminal", 5));
+        locations.add(new Location("Don Ramos", 7));
+        locations.add(new Location("Capitolio", 10));
+        locations.add(new Location("Nuciti", 12));
+        locations.add(new Location("Plaza", 15));
+        locations.add(new Location("SM Mall", 17));
+        locations.add(new Location("BatStateU Pablo Borbon", 20));
+        locations.add(new Location("Batangas Pier", 25));
         
         locations.sort(Comparator.comparing(Location::getName));
     }

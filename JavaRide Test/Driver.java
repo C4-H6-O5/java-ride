@@ -4,20 +4,26 @@ import java.util.List;
 public class Driver extends User {
     private Vehicle vehicle;
     private String bio;
-    private final double rating;
+    private final double baseRating;
     private final List<Review> reviews;
 
     public Driver(String name, int age, String address, String contactNumber, Vehicle vehicle, String bio, double rating) {
         super(name, age, address, contactNumber);
         this.vehicle = vehicle;
         this.bio = bio;
-        this.rating = rating;
+        this.baseRating = rating;
         this.reviews = new ArrayList<>();
     }
 
     public Vehicle getVehicle() { return vehicle; }
     public String getBio() { return bio; }
-    public double getRating() { return rating; }
+    public double getRating() {
+        if (reviews.isEmpty()) {
+            return baseRating;
+        }
+        // Calculate the average rating from all reviews
+        return reviews.stream().mapToInt(Review::getRating).average().orElse(baseRating);
+    }
     public List<Review> getReviews() { return reviews; }
 
     public void setVehicle(Vehicle vehicle) { this.vehicle = vehicle; }
@@ -29,6 +35,6 @@ public class Driver extends User {
         return super.toString() + "\n" +
                "Vehicle: " + (vehicle != null ? vehicle.toString() : "None assigned") + "\n" +
                "Bio: " + bio + "\n" +
-               String.format("Rating: %.1f⭐", rating);
+               String.format("Rating: %.1f⭐", getRating());
     }
 }
