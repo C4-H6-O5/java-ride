@@ -468,11 +468,17 @@ public class Main {
         Utility.clearConsole();
         System.out.println("--- Vehicle Details ---");
         System.out.print("Enter your vehicle's Plate Number: ");
-        String plateNumber;
+        String plateNumber;        
         while (true) {
             plateNumber = input.nextLine();
+            final String finalPlateNumber = plateNumber; 
+            boolean plateExists = driverAccounts.stream()
+                .anyMatch(d -> d.getVehicle().getPlateNumber().equalsIgnoreCase(finalPlateNumber));
+
             if (plateNumber.trim().isEmpty()) {
                 System.out.print("Plate number cannot be empty. Please enter a valid plate number: ");
+            } else if (plateExists) {
+                System.out.print("This plate number is already registered. Please enter a different one: ");
             } else {
                 break;
             }
