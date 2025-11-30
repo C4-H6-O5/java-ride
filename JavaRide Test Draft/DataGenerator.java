@@ -5,17 +5,16 @@ import java.util.Random;
 public class DataGenerator {
     private static Random random = new Random();
     
-    // Preset data pools
     private static String[] firstNames = {
-        "Mhalik", "Regina", "Elai", "Rejc", "Vincent", "Fatima", 
-        "Ritzy", "Maurice", "Jennifer", "Glenn", "Jom", "Sheena",
-        "Nicko", "Francis", "Cole", "Israel", "Trevor", "Sofhia"
+        "Mhalik", "Regina", "Elaiza", "Rejc", "Vincent", "Ritzy", 
+        "Fatima", "Maurice", "Lloyd", "Jenny", "Glen", "Karen",
+        "Joey", "Aries", "Jei", "Nayeon", "Hyunjin", "Minho"
     };
     
     private static String[] lastNames = {
-        "Perez", "Bool", "Espartinez", "Guillo", "Doria", "Agdon",
-        "Celestial", "Dela Cruz", "Mendoza", "Guinoban", "Manguit", "Abe",
-        "Palicpic", "Santiago", "Bulaon", "Penero", "Marcos", "Asilo"
+        "Perez", "Bool", "Espartinez", "Guillo", "Doria", "Celestial",
+        "Agdon", "Dela Cruz", "Macatangay", "Mendoza", "Magadia", "Kim",
+        "De Castro", "Park", "Pastrana", "Im", "Hwang", "Lee"
     };
     
     private static String[] cities = {
