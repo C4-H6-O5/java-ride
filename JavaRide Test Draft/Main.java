@@ -510,7 +510,7 @@ public class Main {
                 if (Utility.getIntInput(input) == 1) {
                     allBookings.addAll(DataGenerator.generateBookings(random.nextInt(4) + 3, locationManager));
                     Utility.clearConsole();
-                    Utility.showLoading("Searching for new ride requests...", 2);
+                    Utility.showLoading("Searching for new ride requests...\n", 2);
                 } else {
                     return;
                 }
@@ -663,11 +663,13 @@ public class Main {
 
                 System.out.printf("\nCashing out Php %.2f. Funds will be transferred to your account within 2-3 business days.\n", totalEarnings);
             }
+            else {
+                return;
+            }
         } else {
             System.out.println("\nYou have no available earnings to cash out.");
         }
 
-        System.out.print("Press 'Enter' to return to the menu. ");
         input.nextLine();
     }
 
