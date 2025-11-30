@@ -432,7 +432,7 @@ public class Main {
                     } else {
                         System.out.printf("Your average rating from %d review(s) is: %.1f / 5.0\n", reviews.size(), driver.getRating());
                     }
-                    System.out.print("\nPress 'Enter' to return to your profile...");
+                    System.out.print("\nPress 'Enter' to return to your profile. ");
                     input.nextLine();
                     break;
                 case 2:
@@ -560,7 +560,7 @@ public class Main {
             System.out.print("Enter a short message for declining (e.g., 'Too far'): ");
             String declineMsg = input.nextLine();
             System.out.println("Request declined. Message sent: \"" + declineMsg + "\"");
-            System.out.print("Press 'Enter' to return to the menu.");
+            System.out.print("Press 'Enter' to return to the menu. ");
             input.nextLine();
         }
     }
@@ -571,7 +571,7 @@ public class Main {
         Utility.clearConsole();
         System.out.println("You have arrived at the pickup location.");
         System.out.println("Passenger: " + booking.getPassenger().getName());
-        System.out.print("Press 'Enter' to start the trip to " + booking.getDropOffPoint().getName());
+        System.out.print("Press 'Enter' to start the trip to " + booking.getDropOffPoint().getName() + " ");
         input.nextLine();
 
         Utility.showLoading("Trip to destination in progress...", 6);
@@ -588,7 +588,7 @@ public class Main {
             System.out.println("\n[!] New Review Received! Check your reviews in the booking history menu.");
         }
 
-        System.out.print("Press 'Enter' to return to the Driver Menu.");
+        System.out.print("Press 'Enter' to return to Menu. ");
         input.nextLine();
     }
 
@@ -635,7 +635,7 @@ public class Main {
                     continue;
             }
 
-            System.out.print("\nPress 'Enter' to return to the history menu.");
+            System.out.print("\nPress 'Enter' to return to the history menu. ");
             input.nextLine();
         }
     }
@@ -663,7 +663,7 @@ public class Main {
             System.out.println("\nYou have no available earnings to cash out.");
         }
 
-        System.out.print("Press 'Enter' to return to the menu.");
+        System.out.print("Press 'Enter' to return to the menu. ");
         input.nextLine();
     }
 
