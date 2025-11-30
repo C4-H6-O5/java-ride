@@ -505,10 +505,11 @@ public class Main {
                 .count();
 
             if (pendingCount == 0) {
-                System.out.println("No pending ride requests available for your vehicle type.");
+                System.out.println("No pending ride requests available for your vehicle type.\n");
                 System.out.print("Would you like to [1] Search Again or [2] Return to Menu? ");
                 if (Utility.getIntInput(input) == 1) {
                     allBookings.addAll(DataGenerator.generateBookings(random.nextInt(4) + 3, locationManager));
+                    Utility.clearConsole();
                     Utility.showLoading("Searching for new ride requests...", 2);
                 } else {
                     return;
@@ -552,7 +553,9 @@ public class Main {
             selectedBooking.setDriver(driver);
             selectedBooking.setVehicle(driver.getVehicle());
             selectedBooking.confirmBooking();
-            System.out.println("\nRide Accepted! Please proceed to the pickup location.");
+            System.out.println("\nRide Accepted! Click 'Enter' to proceed to the pickup location.");
+            input.nextLine();
+            Utility.clearConsole();
             simulateDriverTrip(selectedBooking);
         } else {
             selectedBooking.setDriver(driver); 
@@ -569,12 +572,13 @@ public class Main {
         Utility.showLoading("Driving to pickup location: " + booking.getPickupPoint().getName(), 4);
         
         Utility.clearConsole();
-        System.out.println("You have arrived at the pickup location.");
+        System.out.println("You have arrived at the pickup location!");
         System.out.println("Passenger: " + booking.getPassenger().getName());
-        System.out.print("Press 'Enter' to start the trip to " + booking.getDropOffPoint().getName() + " ");
+        System.out.print("\nPress 'Enter' to start the trip to " + booking.getDropOffPoint().getName() + ". ");
         input.nextLine();
 
-        Utility.showLoading("Trip to destination in progress...", 6);
+        Utility.clearConsole();
+        Utility.showLoading("Trip to destination in progress...\n", 6);
         System.out.println("You have arrived at the destination. The ride is complete!");
 
         allBookings.removeIf(b -> b.getStatus() == BookingStatus.PENDING);
