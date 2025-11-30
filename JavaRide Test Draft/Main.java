@@ -169,7 +169,7 @@ public class Main {
                     Utility.clearConsole();
                     System.out.println("You have reached the maximum number of cancellations for this booking.");
                     System.out.println("Please start a new booking if you wish to find a ride.");
-                    System.out.print("Press 'Enter' to return to the Menu.");
+                    System.out.print("Press 'Enter' to return to the Menu. ");
                     input.nextLine();
                     return;
                 }
@@ -180,7 +180,7 @@ public class Main {
                 Driver nextDriver = Utility.findRandomDriver(vehicleType, driverAccounts, excludedDrivers);
                 if (nextDriver == null) {
                     System.out.println("Sorry, no other drivers are available right now. Please try again later.");
-                    System.out.print("Press 'Enter' to return to the Menu.");
+                    System.out.print("Press 'Enter' to return to the Menu. ");
                     input.nextLine();
                     return;
                 }
@@ -213,7 +213,7 @@ public class Main {
                  if (assignedDriver == null) {
                     Utility.clearConsole();
                     System.out.println("Sorry, no other " + vehicleType + " drivers are available right now. Please try again later.");
-                    System.out.print("Press 'Enter' to return to the Menu.");
+                    System.out.print("Press 'Enter' to return to the Menu. ");
                     input.nextLine();
                     break; 
                 }
@@ -311,7 +311,7 @@ public class Main {
 
         Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
         booking.getDriver().addReview(review);
-        System.out.println("\nThank you for your feedback! Press 'Enter' to return to Menu.");
+        System.out.print("\nThank you for your feedback! Press 'Enter' to return to Menu. ");
         input.nextLine();
         return false; 
     }
@@ -345,7 +345,7 @@ public class Main {
                             System.out.print("===================================\n");
                         }
                     }
-                    System.out.print("\nPress 'Enter' to return to your profile...");
+                    System.out.print("\nPress 'Enter' to return to your profile. ");
                     input.nextLine();
                     break; 
                 case 2:
@@ -356,7 +356,7 @@ public class Main {
                         Utility.clearConsole();
                         System.out.println("Whoa, we just had the ride of our life together!");
                         System.out.println("Maybe we'll see you again soon when you have a ride with JavaRide!");
-                        System.out.print("Press Enter to exit the application...");
+                        System.out.print("Press 'Enter' to exit the application. ");
                         input.nextLine(); 
                         System.exit(0);  
                     }
