@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.io.IOException;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
