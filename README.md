@@ -86,7 +86,7 @@
 
 ```
 REMix/
-└── JavaRide/
+└──🗂️JavaRide/
      │ ├── Main.java
      │ ├── Utility.java
      │ ├── User.java
@@ -100,6 +100,8 @@ REMix/
      │ ├── Review.java
      │ ├── DataGenerator.java
      │ └── LocationManager.java
+     |
+     ├── logo.png
      └── README.md
 ```
 ---
