@@ -10,14 +10,14 @@ public final class Utility {
 
     private Utility() {}
 
-    // ======================================================
+
     // ANSI COLORS (COLOR CODES)
-    // ======================================================
+
     public static final String RESET       = "\u001B[0m";
     public static final String BOLD        = "\u001B[1m";
 
-    public static final String GREEN         = "\u001B[32m";     // Grab green
-    public static final String BRIGHT_GREEN  = "\u001B[92m";     // Accent
+    public static final String GREEN         = "\u001B[32m";     
+    public static final String BRIGHT_GREEN  = "\u001B[92m";     
     public static final String WHITE         = "\u001B[97m";
     public static final String GRAY          = "\u001B[90m";
     public static final String RED           = "\u001B[31m";
@@ -26,9 +26,8 @@ public final class Utility {
     public static final String CYAN          = "\u001B[36m";
 
 
-    // ======================================================
     // INPUT HANDLING
-    // ======================================================
+
     public static int getIntInput(Scanner input) {
         while (true) {
             try {
@@ -41,9 +40,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // CLEAR SCREEN
-    // ======================================================
+
     public static void clearConsole() {
         try {
             String os = System.getProperty("os.name");
@@ -60,9 +59,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+    
     // WELCOME PROMPT 
-    // ======================================================
+
     public static void welcomePrompt(Scanner input, String name) {
         System.out.println(GREEN + BOLD + "\n --- All set! Let's hit the road, " + name + "!---" + RESET);
         System.out.println(YELLOW + "> Loading your dashboard..." + RESET);
@@ -75,9 +74,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // SELECT USER TYPE
-    // ======================================================
+
     public static UserType selectUserType(Scanner input) {
         clearConsole();
         boxTitle("SELECT USER TYPE");
@@ -100,9 +99,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // LOCATION SELECTION
-    // ======================================================
+
     public static LocationManager.Location selectLocation(
             Scanner input,
             LocationManager locationManager,
@@ -131,9 +130,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // VEHICLE TYPE
-    // ======================================================
+
     public static VehicleType selectVehicleType(Scanner input) {
         clearConsole();
         boxTitle("SELECT VEHICLE TYPE");
@@ -155,9 +154,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // RANDOM DRIVER
-    // ======================================================
+
     public static Driver findRandomDriver(
             VehicleType type,
             List<Driver> drivers,
@@ -174,9 +173,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     //  LOADING BAR
-    // ======================================================
+
     public static void showLoading(String task, int durationSec) {
         char FILL = '\u2588';
         char EMPTY = '\u2591';
@@ -208,9 +207,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // BOX TITLE
-    // ======================================================
+
     public static void boxTitle(String title) {
         String line = "+=============================================================+";
         System.out.println(
@@ -231,9 +230,9 @@ public final class Utility {
     }
 
 
-    // ======================================================
+
     // GRAB LOGO (Professional Console Style)
-    // ======================================================
+
     public static void displayGrabLogo() {
         String[] logo = {
         "           )))                                               ",

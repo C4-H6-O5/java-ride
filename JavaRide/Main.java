@@ -58,9 +58,7 @@ public class Main {
         input.close();
     }
 
-    // ============================
     // PASSENGER FLOW
-    // ============================
     private static void runPassengerFlow() {
         Passenger currentPassenger = registerPassenger();
         if (currentPassenger == null) return;
@@ -370,9 +368,9 @@ public class Main {
         }
     }
 
-    // ============================
+
     // DRIVER FUNCTIONS
-    // ============================
+
     private static void runDriverFlow() {
         Driver currentDriver = registerDriver();
         if (currentDriver == null) return;

@@ -21,7 +21,7 @@ public class Driver extends User {
         if (reviews.isEmpty()) {
             return baseRating;
         }
-        // Calculate the average rating from all reviews
+        
         return reviews.stream().mapToInt(Review::getRating).average().orElse(baseRating);
     }
     public List<Review> getReviews() { return reviews; }

@@ -5,7 +5,7 @@ public class Passenger extends User {
     public Passenger(String name, int age, String address, String contactNumber, UserType userType, String idNumber) {
         super(name, age, address, contactNumber);
         this.userType = userType;
-        // Ensure idNumber is never null for non-regular users
+        
         this.idNumber = (idNumber == null || idNumber.trim().isEmpty()) ? "N/A" : idNumber;
     }
 
@@ -15,7 +15,7 @@ public class Passenger extends User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()); // Reuse the parent's toString() method
+        sb.append(super.toString()); 
         sb.append("\nUser Type: ").append(userType);
         if (userType != UserType.REGULAR) {
             sb.append("\nID Number: ").append(idNumber);
