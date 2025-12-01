@@ -135,13 +135,62 @@ java Main
 
 
 ```
-<p align="center">
-  <img src="https://github.com/C4-H6-O5/java-ride/blob/Elai/console.png" 
-       alt="Console Flow" 
-       width="1000"/>
-</p>
+           )))                                               
+         (((                                       ____________
+           )))                                _____//___||___\\_____                                                                                                           
+          ____                               (______    __        __)
+         /   /_____ ___ ___    ___  _____ __ /  ___ \  (__)______/ /____
+  ____  /   //  ___ ` / \  \  /  //  __  ` //  /__/ / /  //  ___  //  _ \
+ /   /_/   //  /_ /  /   \  \/  //  /__/  //  __,__/ /  //  /__/ //  __/ 
+ \_______ / \____,__/     \____/ \____,__//__/  \__\/__/ \___,__/ \____/ 
 
+------------------------------------------------------------------------
+                      Welcome to JavaRide                                                                                                                                      
+                  Brewing Better Rides For You!
+------------------------------------------------------------------------
+
+Press [ENTER] to continue...
+
++=============================================================+
+|                      JAVA RIDE MAIN MENU                    |
++=============================================================+
+[1] Passenger
+[2] Driver
+[3] Exit Application
+
+Select your account type: 1
+
++=============================================================+
+|                  NEW PASSENGER REGISTRATION                 |
++=============================================================+
+Name: Elaiza
+Age: 20
+Address: Sitio Calumpang
+Contact Number: 09123456789
+
++=============================================================+
+|                       SELECT USER TYPE                      |
++=============================================================+
+[1] REGULAR
+[2] STUDENT
+[3] SENIOR
+[4] PWD
+ 
+Enter number for type: 2
+Enter your ID Number (STUDENT): 24-01788
+
+ --- All set! Let's hit the road, Elaiza!---
+> Loading your dashboard...
+Initializing Dashboard
+██████████████████████████████ 100%
+
+============================================ 
+
+Hello, Elaiza! Your setup is now complete.
+
+Press [ENTER] to continue to the Home Page...
 ```
+
 ---
 
 
