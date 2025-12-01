@@ -65,7 +65,7 @@ public class Booking {
         if (driver != null) {
             sb.append("Driver: ").append(driver.getName())
               .append(" (").append(vehicle.toString()).append(")")
-              .append(" | Rating: ").append(String.format("%.1f ⭐", driver.getRating())).append("\n");
+              .append(" | Rating: ").append(String.format("%.1f ", driver.getRating())).append("\n");
         } else {
             sb.append("Not assigned yet\n");
         }
