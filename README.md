@@ -68,46 +68,45 @@
 ---
 
 ## 🗂️ Project Structure
+
 ```
 REMix/
 └── JavaRide/
-    ├── src/
-    │   ├── Main.java
-    │   ├── Utility.java
-    │   ├── User.java
-    │   ├── UserType.java
-    │   ├── Passenger.java
-    │   ├── Driver.java
-    │   ├── Vehicle.java
-    │   ├── VehicleType.java
-    │   ├── Booking.java
-    │   ├── BookingStatus.java
-    │   ├── Review.java
-    │   ├── DataGenerator.java
-    │   └── LocationManager.java
-    └── README.md
+     │ ├── Main.java
+     │ ├── Utility.java
+     │ ├── User.java
+     │ ├── UserType.java
+     │ ├── Passenger.java
+     │ ├── Driver.java
+     │ ├── Vehicle.java
+     │ ├── VehicleType.java
+     │ ├── Booking.java
+     │ ├── BookingStatus.java
+     │ ├── Review.java
+     │ ├── DataGenerator.java
+     │ └── LocationManager.java
+     └── README.md
 ```
+---
+
+
 ---
 
 ## ▶️ How to Run
 
 **Compile all Java files**
 
-```
+```bash
 javac *.java
 
-```
 
-**Run:**
-
-```
 java Main
+
 ```
 
 ---
 
 ## 📝 **Console Flow**
-
 
 ```
            )))                                               
@@ -164,6 +163,7 @@ Initializing Dashboard
 Hello, Elaiza! Your setup is now complete.
 
 Press [ENTER] to continue to the Home Page...
+
 ```
 
 ---
