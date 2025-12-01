@@ -135,7 +135,11 @@ java Main
 
 
 ```
-
+<p align="center">
+  <img src="" 
+       alt="Console Flow" 
+       width="1000"/>
+</p>
 ---
 
 
