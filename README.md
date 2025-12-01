@@ -91,19 +91,26 @@ It replicates key functionalities of modern ride-hailing apps, including user re
 ## 🗂️ **Project Structure**
 
 ```
-src/
-└── javaride/
+🗂️JavaRide Test/
+└── 🗂️java-ride/
     ├── Main.java
+    ├── Utility.java
     ├── User.java
+    ├── UserType.java
     ├── Passenger.java
     ├── Driver.java
     ├── Vehicle.java
-    ├── Motorcycle.java
-    ├── NormalCar.java
-    ├── PremiumCar.java
+    ├── VehicleType.java
+    |    ├── MOTORCYCLE
+    |    ├── NORMAL
+    |    └── PREMIUN
+    |    
     ├── Booking.java
+    ├── BookingStatus.java
     ├── Review.java
-    └── DataManager.java
+    ├── DataGenerator.java
+    └── LocationManager.java
+
 ```
 
 ---
