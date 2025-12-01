@@ -132,9 +132,6 @@ public class Main {
         Utility.clearConsole();
         Utility.boxTitle("BOOK A NEW RIDE");
 
-        System.out.print(Utility.BOLD + "Number of passengers: " + Utility.RESET);
-        int numPassengers = Utility.getIntInput(input);
-
         Utility.clearConsole();
         System.out.println(Utility.CYAN + "Select Pickup Point" + Utility.RESET);
         LocationManager.Location pickup = Utility.selectLocation(input, locationManager, null);
@@ -146,6 +143,23 @@ public class Main {
         Utility.clearConsole();
         System.out.println(Utility.CYAN + "Select Vehicle Type" + Utility.RESET);
         VehicleType vehicleType = Utility.selectVehicleType(input);
+
+        int maxPassengers;
+        switch (vehicleType) {
+            case MOTORCYCLE -> maxPassengers = 1;
+            case NORMAL, PREMIUM -> maxPassengers = 4;
+            default -> maxPassengers = 4; // Fallback
+        }
+
+        int numPassengers;
+        while (true) {
+            System.out.print(Utility.BOLD + "Number of passengers (" + maxPassengers + "): " + Utility.RESET);
+            numPassengers = Utility.getIntInput(input);
+            if (numPassengers > 0 && numPassengers <= maxPassengers) {
+                break;
+            }
+            System.out.println(Utility.RED + "Invalid number of passengers for " + vehicleType + ". Please enter a number between 1 and " + maxPassengers + "." + Utility.RESET);
+        }
 
         Utility.clearConsole();
         Utility.showLoading(Utility.YELLOW +">>>>> Searching for a driver..." + Utility.RESET, 3);

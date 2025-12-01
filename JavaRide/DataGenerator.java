@@ -51,8 +51,16 @@ public class DataGenerator {
     
     private static Vehicle createRandomVehicle() {
         VehicleType type = vehicleTypes[random.nextInt(vehicleTypes.length)];
-        String plateNumber = "J" + (100 + random.nextInt(900)) + "R"; 
-
+        
+        StringBuilder plateBuilder = new StringBuilder();
+        // Append 3 random uppercase letters
+        for (int i = 0; i < 3; i++) {
+            plateBuilder.append((char) ('A' + random.nextInt(26)));
+        }
+        // Append a 3-digit number (100-999)
+        plateBuilder.append(100 + random.nextInt(900));
+        String plateNumber = plateBuilder.toString();
+        
         switch (type) {
             case MOTORCYCLE:
                 return new Motorcycle(plateNumber);
