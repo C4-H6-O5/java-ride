@@ -10,7 +10,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Java-orange" alt="Java">
   <img src="https://img.shields.io/badge/Status-Prototype-blue" alt="status">
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="license">
 </p>
 
 ---
@@ -38,7 +37,6 @@
 - [Contributors](#-contributors)  
 - [Acknowledgements](#-acknowledgements)  
 - [Disclaimer](#-disclaimer)  
-- [License](#-license)
 
 ---
 
@@ -67,6 +65,27 @@
 - Randomized driver assignment
 - Color-coded console UI (ANSI-friendly)
 - ASCII art, animated loading/progress bars
+
+---
+
+## 🗂️ **Project Structure**
+REMix/
+└── JavaRide/
+    ├── src/
+    │   ├── Main.java
+    │   ├── Utility.java
+    │   ├── User.java
+    │   ├── UserType.java
+    │   ├── Passenger.java
+    │   ├── Driver.java
+    │   ├── Vehicle.java
+    │   ├── VehicleType.java
+    │   ├── Booking.java
+    │   ├── BookingStatus.java
+    │   ├── Review.java
+    │   ├── DataGenerator.java
+    │   └── LocationManager.java
+    └── README.md
 
 ---
 
@@ -255,7 +274,7 @@ Press [ENTER] to continue to the Home Page...
 ---
 
 ## ✨ **| ACKNOWLEDGEMENT |** ✨
-*We sincerely express our gratitude to our instructor for the guidance and support provided throughout the completion of this project. We also extend our aappreciation to our peers for their cooperation and encouragement during the develepmont process. And also to our parents
+We, the proponents of JavaRide, sincerely express our gratitude to everyone who supported the completion of this project. We thank our instructor for the guidance, feedback, and encouragement that strengthened our skills and understanding of Object-Oriented Programming, and we appreciate our classmates and peers for their collaboration and helpful insights throughout the process. To our families, thank you for your patience, motivation, and unwavering support during long hours of development and documentation. We also acknowledge the tools, references, and learning materials that contributed to the success of this project. This achievement reflects the collective support and encouragement we received, and we are deeply grateful to all who contributed in any way.
 
 ---
 
