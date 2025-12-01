@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png" alt="JavaRide Logo" width="600"/>
+  <img src="https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png" alt="JavaRide Logo" width="1000"/>
 </p>
 
 <h1 align="center">JavaRide</h1>
@@ -15,9 +15,9 @@
 
 ## 🚗 About JavaRide
 
-**JavaRide** is a Java console-based ride-hailing simulator that replicates key behaviors of ride-hailing apps: user registration, driver assignment, ride tracking, feedback collection, and earnings management.
+**JavaRide** is a Java console-based ride-hailing simulator that replicates core behaviors of ride-hailing apps: user registration, driver assignment, ride tracking, feedback collection, and earnings management.
 
-**Key Goals**
+**Key goals**
 - Realistic ride simulation
 - Menu-driven, user-friendly console UI
 - Clear application of OOP principles
@@ -27,15 +27,16 @@
 
 ## 📋 Table of Contents
 
-- 📘 [Core Functionalities](#core-functionalities)  
-- ▶️ [How to Run](#how-to-run)  
-- 🗂️ [Project Structure](#project-structure)  
-- 📝 [Console Flow (Preview)](#console-flow-preview)  
-- 🔄 [System Flow](#system-flow)  
-- 🔍 [Feature Comparison](#feature-comparison-table)  
-- 👥 [Contributors](#contributors)  
-- ✨ [Acknowledgement](#acknowledgement)  
-- 📢 [Disclaimer](#disclaimer)  
+- [Core Functionalities](#-core-functionalities)  
+- [How to Run](#-how-to-run)  
+- [Console Flow (Preview)](#-console-flow-preview)  
+- [System Flow](#-system-flow)  
+- [Feature Comparison](#-feature-comparison-table)  
+- [Project Structure](#-project-structure)  
+- [Contributors](#-contributors)  
+- [Acknowledgements](#-acknowledgements)  
+- [Disclaimer](#-disclaimer)  
+
 
 ---
 
