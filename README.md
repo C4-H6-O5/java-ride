@@ -136,7 +136,7 @@ java Main
 
 ```
 <p align="center">
-  <img src="" 
+  <img src="https://github.com/C4-H6-O5/java-ride/blob/c666d4d484945b7b8bb45e1255253aba97402e70/Console%20Flow.png" 
        alt="Console Flow" 
        width="1000"/>
 </p>
