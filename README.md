@@ -115,11 +115,16 @@ REMix/
 
 ```bash
 
+** METHOD 1 **
 cd "JavaRide"
 
 javac *.java
 
 java Main
+
+** METHOD 2 **
+
+javac -encoding UTF-8 *.java
 
 ```
 
