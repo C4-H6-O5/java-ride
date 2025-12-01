@@ -114,6 +114,9 @@ REMix/
 **Compile all Java files**
 
 ```bash
+
+cd "JavaRide"
+
 javac *.java
 
 
