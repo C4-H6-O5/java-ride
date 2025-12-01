@@ -119,7 +119,6 @@ cd "JavaRide"
 
 javac *.java
 
-
 java Main
 
 ```
