@@ -46,7 +46,7 @@
 
 | Concept           | Implementation                                                                                  |
 |------------------|------------------------------------------------------------------------------------------------|
-| **Encapsulation** | Private fields with getters/setters in `User`, `Passenger`, `Driver`, `Vehicle`, `Booking`, `Utility`     |
+| **Encapsulation** | Private fields with getters/setters/enums in `User`, `Passenger`, `Driver`, `Vehicle`, `Booking`, `Utility`     |
 | **Inheritance**   | `User → Passenger / Driver`; `Vehicle → Motorcycle / NormalCar / PremiumCar`                  |
 | **Polymorphism**  | Overridden methods in Vehicle subclasses (`getType()`, `calculateFare()`)                      |
 | **Abstraction**   | `Vehicle` is abstract; base logic implemented in subclasses                                     |
