@@ -15,9 +15,9 @@
 
 ## 🚗 About JavaRide
 
-**JavaRide** is a Java console-based ride-hailing simulator that replicates core behaviors of ride-hailing apps: user registration, driver assignment, ride tracking, feedback collection, and earnings management.
+**JavaRide** is a Java console-based ride-hailing simulator that replicates key behaviors of ride-hailing apps: user registration, driver assignment, ride tracking, feedback collection, and earnings management.
 
-**Key goals**
+**Key Goals**
 - Realistic ride simulation
 - Menu-driven, user-friendly console UI
 - Clear application of OOP principles
@@ -27,15 +27,15 @@
 
 ## 📋 Table of Contents
 
-- 📘 [Core Functionalities](#-core-functionalities)  
-- ▶️ [How to Run](#-how-to-run)
-- 🗂️ [Project Structure](#-project-structure)  
-- 📝 [Console Flow (Preview)](#-console-flow-preview)  
-- 🔄 [System Flow](#-system-flow)  
-- 🔍 [Feature Comparison](#-feature-comparison-table)  
-- 👥 [Contributors](#-contributors)  
-- ✨ [Acknowledgement](#-acknowledgement)  
-- 📢 [Disclaimer](#-disclaimer)  
+- 📘 [Core Functionalities](#core-functionalities)  
+- ▶️ [How to Run](#how-to-run)  
+- 🗂️ [Project Structure](#project-structure)  
+- 📝 [Console Flow (Preview)](#console-flow-preview)  
+- 🔄 [System Flow](#system-flow)  
+- 🔍 [Feature Comparison](#feature-comparison-table)  
+- 👥 [Contributors](#contributors)  
+- ✨ [Acknowledgement](#acknowledgement)  
+- 📢 [Disclaimer](#disclaimer)  
 
 ---
 
@@ -49,7 +49,7 @@
 - Book a ride (passengers, pickup/drop-off, vehicle type)
 - Fare estimate & randomized driver assignment
 - Track ride progress (with messages at thresholds)
-- Cancel under rules (e.g., allowed if \<50% progress)
+- Cancel under rules (allowed if \<50% progress)
 - Leave reviews & ratings
 - View profile & booking history
 
@@ -67,7 +67,7 @@
 
 ---
 
-## 🗂️ **Project Structure**
+## 🗂️ Project Structure
 ```
 REMix/
 └── JavaRide/
