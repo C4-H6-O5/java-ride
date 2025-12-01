@@ -27,15 +27,15 @@
 
 ## 📋 Table of Contents
 
-- [Core Functionalities](#-core-functionalities)  
-- [How to Run](#-how-to-run)  
-- [Console Flow (Preview)](#-console-flow-preview)  
-- [System Flow](#-system-flow)  
-- [Feature Comparison](#-feature-comparison-table)  
-- [Project Structure](#-project-structure)  
-- [Contributors](#-contributors)  
-- [Acknowledgement](#-acknowledgement)  
-- [Disclaimer](#-disclaimer)  
+- 📘 [Core Functionalities](#-core-functionalities)  
+- ▶️ [How to Run](#-how-to-run)
+- 🗂️ [Project Structure](#-project-structure)  
+- 📝 [Console Flow (Preview)](#-console-flow-preview)  
+- 🔄 [System Flow](#-system-flow)  
+- 🔍 [Feature Comparison](#-feature-comparison-table)  
+- 👥 [Contributors](#-contributors)  
+- ✨ [Acknowledgement](#acknowledgement)  
+- 📢 [Disclaimer](#-disclaimer)  
 
 ---
 
@@ -68,6 +68,7 @@
 ---
 
 ## 🗂️ **Project Structure**
+```
 REMix/
 └── JavaRide/
     ├── src/
@@ -85,7 +86,7 @@ REMix/
     │   ├── DataGenerator.java
     │   └── LocationManager.java
     └── README.md
-
+```
 ---
 
 ## ▶️ How to Run
