@@ -44,7 +44,7 @@ public class DataGenerator {
         "A pleasant and enjoyable journey."
     };
 
-    // Generate random phone number
+
     private static String generatePhoneNumber() {
         return "09" + (100000000 + random.nextInt(900000000));
     }
@@ -57,7 +57,7 @@ public class DataGenerator {
         for (int i = 0; i < 3; i++) {
             plateBuilder.append((char) ('A' + random.nextInt(26)));
         }
-        // Append a 3-digit number (100-999)
+
         plateBuilder.append(100 + random.nextInt(900));
         String plateNumber = plateBuilder.toString();
         switch (type) {
@@ -71,8 +71,7 @@ public class DataGenerator {
                 return new Normal(plateNumber);
         }
     }
-
-    // Generate random driver
+    
     public static Driver generateDriver() {
         String firstName = firstNames[random.nextInt(firstNames.length)];
         String lastName = lastNames[random.nextInt(lastNames.length)];
@@ -88,7 +87,7 @@ public class DataGenerator {
         return new Driver(name, age, city, contact, vehicle, bio, rating);
     }
     
-    // Generate random passenger
+
     public static Passenger generatePassenger() {
         String firstName = firstNames[random.nextInt(firstNames.length)];
         String lastName = lastNames[random.nextInt(lastNames.length)];
@@ -108,7 +107,7 @@ public class DataGenerator {
         return new Passenger(name, age, city, contact, userType, idNumber);
     }
     
-    // Generate multiple drivers
+  
     public static List<Driver> generateDrivers(int count) {
         List<Driver> drivers = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -117,7 +116,7 @@ public class DataGenerator {
         return drivers;
     }
     
-    // Generate multiple passengers
+
     public static List<Passenger> generatePassengers(int count) {
         List<Passenger> passengers = new ArrayList<>();
         for (int i = 0; i < count; i++) {
