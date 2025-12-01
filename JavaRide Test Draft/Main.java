@@ -31,6 +31,7 @@ public class Main {
         // JAVA RIDE MAIN MENU
             Utility.clearConsole();
             Utility.displayGrabLogo();
+            System.out.println(" ");
             Utility.boxTitle("JAVA RIDE MAIN MENU");
 
             System.out.println(Utility.BLUE + Utility.BOLD + "[1]" + Utility.RESET + " Passenger");
@@ -227,7 +228,7 @@ public class Main {
     private static boolean simulateTrip(Booking booking, List<Driver> excludedDrivers) {
         Utility.clearConsole();
         System.out.println(Utility.CYAN + ">>>>> Waiting for driver to arrive..." + Utility.RESET);
-        System.out.println(Utility.RED + Utility.BOLD + "(!)" + Utility.RESET + Utility.BOLD + " Press " + Utility.GREEN + "[ENTER] " + Utility.RESET + Utility.RED + Utility.BOLD +"to cancel if below 50%\n" + Utility.RESET);
+        System.out.println(Utility.RED + Utility.BOLD + "(!)" + Utility.BOLD + " Press " + Utility.GREEN + "[ENTER] " + Utility.RESET + Utility.RED + Utility.BOLD +"to cancel if below 50%\n" + Utility.RESET);
 
         try {
             for (int progress = 0; progress <= 100; progress++) {
@@ -260,7 +261,8 @@ public class Main {
                         int choice = Utility.getIntInput(input);
 
                         if (choice == 1) {
-                            System.out.print(Utility.YELLOW + "Confirm cancellation? [1] " + Utility.BRIGHT_GREEN + "Yes " + Utility.RESET +  "[2] " +Utility.RED + "No: "+ Utility.RESET);
+                            System.out.println(" ");
+                            System.out.print(Utility.YELLOW + "Confirm cancellation? " + Utility.RESET + "[1] " + Utility.BRIGHT_GREEN + "Yes " + Utility.RESET +  "[2] " +Utility.RED + "No: "+ Utility.RESET);
                             if (Utility.getIntInput(input) == 1) {
                                 booking.cancelBooking();
                                 System.out.println(Utility.RED + Utility.BOLD + "\n! Booking has been cancelled !"+ Utility.RESET);
@@ -299,7 +301,8 @@ public class Main {
         int rating = 0;
         while (rating < 1 || rating > 5) rating = Utility.getIntInput(input);
 
-        System.out.print("Leave a comment: ");
+        System.out.println(" ");
+        System.out.print(Utility.BOLD + "Leave a comment: " + Utility.RESET);
         String comment = input.nextLine();
 
         Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
@@ -400,9 +403,12 @@ public class Main {
             System.out.println(Utility.CYAN + Utility.BOLD + "===== |  My Profile  | =====" + Utility.RESET);
             System.out.println(driver.toString());
 
-            System.out.println(Utility.BRIGHT_GREEN + "\n[1]" + Utility.RESET + " View Average Rating from Passengers");
-            System.out.println(Utility.GREEN + "[2]" + Utility.RESET + " View My Earnings");
-            System.out.println(Utility.RED + "[3]" + Utility.RESET + " Return to Driver Menu");
+
+            System.out.println(Utility.BLUE + Utility.BOLD + "======================================="+ Utility.RESET);
+            System.out.println(Utility.BRIGHT_GREEN + Utility.BOLD + "\n[1]" + Utility.RESET + " View Average Rating from Passengers");
+            System.out.println(Utility.GREEN + Utility.BOLD + "[2]" + Utility.RESET + " View My Earnings");
+            System.out.println(Utility.RED + Utility.BOLD + "[3]" + Utility.RESET + " Return to Driver Menu");
+            System.out.println(" ");
             System.out.print(Utility.BOLD + "Select an option: " + Utility.BOLD);
             int choice = Utility.getIntInput(input);
 
@@ -412,11 +418,16 @@ public class Main {
                     System.out.println(Utility.BRIGHT_GREEN + Utility.BOLD + "++++++|  Average Rating  | +++++" + Utility.RESET);
                     List<Review> reviews = driver.getReviews();
                     if (reviews.isEmpty()) {
+                        System.out.println("");
                         System.out.println(Utility.BOLD + "You have not received any reviews yet. Your starting rating is shown."+ Utility.RESET);
+                        System.out.println("");
                         System.out.printf(Utility.YELLOW + "Current Rating: %.1f / 5.0\n" + Utility.RESET, driver.getRating());
                     } else {
+                        System.out.println(" ");
                         System.out.printf(Utility.GREEN + "Your average rating from %d review(s) is: %.1f / 5.0\n" + Utility.RESET, reviews.size(), driver.getRating());
                     }
+
+                    System.out.println("");
                     System.out.print("Press" + Utility.GREEN + " [ENTER] " + Utility.RESET +  "to return to your profile. ");
                     input.nextLine();
                     break;
@@ -492,7 +503,7 @@ public class Main {
 
         for (int i = 0; i < pendingRequests.size(); i++) {
             Booking b = pendingRequests.get(i);
-            System.out.printf(Utility.RED + Utility.BOLD + "[%d]" + Utility.RESET  + "From: %s -> To: %s" + Utility.YELLOW + Utility.BOLD + " | Distance: " +Utility.RESET + "%.1f km\n",
+            System.out.printf(Utility.RED + Utility.BOLD + "[%d]" + Utility.RESET  + " From: %s -> To: %s" + Utility.YELLOW + Utility.BOLD + " | Distance: " +Utility.RESET + "%.1f km\n",
                 i + 1, b.getPickupPoint().getName(), b.getDropOffPoint().getName(), b.getDistance());
         }
 
@@ -505,11 +516,12 @@ public class Main {
         System.out.println("~~~~~ |  Request Details  | ~~~~~");
         System.out.println(Utility.BRIGHT_GREEN + "Pickup: " + Utility.RESET + selectedBooking.getPickupPoint().getName());
         System.out.println(Utility.RED + "Drop Off: " + Utility.RESET + selectedBooking.getDropOffPoint().getName());
-        System.out.println(Utility.YELLOW + "Distance: " + Utility.RESET + selectedBooking.getDistance() + " km");
+        System.out.println(Utility.GREEN + "Distance: " + Utility.RESET + selectedBooking.getDistance() + " km");
         System.out.println(Utility.BOLD + "Number of Passengers: " + Utility.RESET + selectedBooking.getNumberOfPassengers());
+        System.out.println("");
         System.out.printf(Utility.YELLOW + Utility.BOLD + "Estimated Fare: Php %.2f\n" + Utility.RESET, driver.getVehicle().calculateFare(selectedBooking.getDistance()));
 
-        System.out.print(Utility.BOLD + "\nDo you want ro [1]" + Utility.BRIGHT_GREEN + " Accept or " + Utility.RESET + Utility.BOLD + "[2] " + Utility.RED + "Decline this ride? " + Utility.RESET);
+        System.out.print(Utility.BOLD + "\nDo you want to [1]" + Utility.BRIGHT_GREEN + " Accept or " + Utility.RESET + Utility.BOLD + "[2] " + Utility.RED + "Decline this ride? " + Utility.RESET);
         if (Utility.getIntInput(input) == 1) {
             selectedBooking.setDriver(driver);
             selectedBooking.setVehicle(driver.getVehicle());
@@ -521,9 +533,14 @@ public class Main {
         } else {
             selectedBooking.setDriver(driver); 
             selectedBooking.setStatus(BookingStatus.CANCELLED);
+
+            System.out.println("");
             System.out.print(Utility.BOLD + "Enter a short message for declining (e.g., 'Too far'): " + Utility.RESET);
             String declineMsg = input.nextLine();
-            System.out.println("Request declined. Message sent: \"" + declineMsg + "\"");
+
+            System.out.println("");
+            System.out.println(Utility.BLUE + "Request declined. Message sent: " + Utility.RESET + "\"" + declineMsg + "\"");
+            System.out.println(" ");
             System.out.print("Press" + Utility.GREEN + " [ENTER] " + Utility.RESET +  "to return to menu. ");
             input.nextLine();
         }
@@ -550,9 +567,10 @@ public class Main {
             String comment = DataGenerator.getRandomReviewComment();
             Review review = new Review(booking.getPassenger(), booking.getDriver(), rating, comment);
             booking.getDriver().addReview(review);
-            System.out.println(Utility.BOLD + "\n -- ! New Review Received! Check your reviews in the booking history menu ! --"+ Utility.RESET);
+            System.out.println(Utility.BOLD + Utility.BLUE + "\n -- ! New Review Received! Check your reviews in the booking history menu ! --"+ Utility.RESET);
         }
 
+        System.out.println("");
         System.out.print("Press" + Utility.GREEN + " [ENTER] " + Utility.RESET +  "to return to Menu. ");
         input.nextLine();
     }
@@ -561,10 +579,12 @@ public class Main {
         while (true) {
             Utility.clearConsole();
             System.out.println(Utility.GRAY + "==<<<<<< My Booking History >>>>>=="+ Utility.RESET);
+            System.out.println("");
             System.out.println(Utility.GREEN + Utility.BOLD + "[1]" + Utility.RESET + " View Accepted Rides");
-            System.out.println(Utility.CYAN + Utility.BOLD + "[2]" + Utility.RESET + " View Cancelled/Declined Rides");
-            System.out.println(Utility.BLUE + Utility.BOLD + "[3]" + Utility.RESET + "  View My Reviews");
+            System.out.println(Utility.GREEN + Utility.BOLD + "[2]" + Utility.RESET + " View Cancelled/Declined Rides");
+            System.out.println(Utility.GREEN + Utility.BOLD + "[3]" + Utility.RESET + "  View My Reviews");
             System.out.println(Utility.RED + Utility.BOLD + "[4]" + Utility.RESET + " Return to Driver Menu");
+            System.out.println("");
             System.out.print(Utility.BOLD + "Select an option: " + Utility.RESET);
             int choice = Utility.getIntInput(input);
 
@@ -573,21 +593,21 @@ public class Main {
             switch (choice) {
                 case 1:
                     Utility.clearConsole();
-                    System.out.println(Utility.GREEN + "+++++ |  Accepted Rides  | +++++" + Utility.RESET);
+                    System.out.println(Utility.GREEN + Utility.BOLD + "+++++ |  Accepted Rides  | +++++" + Utility.RESET);
                     List<Booking> acceptedRides = myRides.stream().filter(b -> b.getStatus() == BookingStatus.ACCEPTED).collect(Collectors.toList());
                     if (acceptedRides.isEmpty()) System.out.println(Utility.RED +"No accepted rides found." + Utility.RESET);
                     else acceptedRides.forEach(b -> System.out.println("\n===================================\n" + b.toDriverString() + "\n==================================="));
                     break;
                 case 2:
                     Utility.clearConsole();
-                    System.out.println(Utility.RED + "----- |  Cancelled/Declined Rides  | -----" + Utility.RESET);
+                    System.out.println(Utility.RED + Utility.BOLD + "----- |  Cancelled/Declined Rides  | -----" + Utility.RESET);
                     List<Booking> cancelledRides = myRides.stream().filter(b -> b.getStatus() == BookingStatus.CANCELLED).collect(Collectors.toList());
                     if (cancelledRides.isEmpty()) System.out.println("No cancelled or declined rides found.");
                     else cancelledRides.forEach(b -> System.out.println("\n===================================\n" + b.toDriverString() + "\n==================================="));
                     break;
                 case 3:
                     Utility.clearConsole();
-                    System.out.println(Utility.BLUE + "<<<<< |  My Reviews  | >>>>>" + Utility.RESET);
+                    System.out.println(Utility.BLUE + Utility.BOLD + "<<<<< |  My Reviews  | >>>>>" + Utility.RESET);
                     List<Review> reviews = driver.getReviews();
                     if (reviews.isEmpty()) System.out.println(Utility.BOLD + "You have not received any reviews yet." + Utility.RESET);
                     else reviews.forEach(r -> System.out.println("- " + r.toString()));
@@ -600,6 +620,7 @@ public class Main {
                     continue;
             }
 
+            System.out.println("");
             System.out.print("Press" + Utility.GREEN + " [ENTER] " + Utility.RESET +  "to return to the history menu. ");
             input.nextLine();
         }
@@ -613,9 +634,11 @@ public class Main {
             .mapToDouble(Booking::getAmount)
             .sum();
 
-        System.out.printf(Utility.BOLD + "Available earnings to cash out: " + Utility.GREEN + "Php %.2f\n" + Utility.RESET, totalEarnings);
+            System.out.println(" ");
+            System.out.printf(Utility.BOLD + "Available earnings to cash out: " + Utility.GREEN + "Php %.2f\n" + Utility.RESET, totalEarnings);
 
         if (totalEarnings > 0) {
+            System.out.println(" ");
             System.out.print(Utility.BOLD + "Do you want to [1]" + Utility.BRIGHT_GREEN + " Cash Out " + Utility.RESET + Utility.BOLD + " or [2] " + Utility.RED + "Return to Menu: " + Utility.RESET);
             if (Utility.getIntInput(input) == 1) {
                 allBookings.stream()
@@ -629,6 +652,8 @@ public class Main {
             }
         } else {
             System.out.println(Utility.RED + "\nYou have no available earnings to cash out." + Utility.RESET);
+            System.out.println("");
+            System.out.print("Press" + Utility.GREEN + " [ENTER] " + Utility.RESET +  "to return to menu. ");
         }
 
         input.nextLine();
