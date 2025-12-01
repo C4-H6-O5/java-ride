@@ -1,126 +1,82 @@
 <p align="center">
-  <img src="https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png" 
-       alt="JavaRide Logo" 
-       width="1000"/>
+  <img src="https://github.com/C4-H6-O5/java-ride/blob/0f8f7b17765a04145104b53c8ba96504d66093ad/logo.png" alt="JavaRide Logo" width="600"/>
 </p>
 
 <h1 align="center">JavaRide</h1>
-<h3 align="center"><i>Brewing Better Rides</i></h3>
-<p align="center"><i>✨ A Project Brewed by <b>REMix</b> ✨</i></p>
+<p align="center"><em>Brewing Better Rides</em></p>
+<p align="center">✨ A Project Brewed by <strong>REMix</strong> ✨</p>
 <p align="center">Regina • Elaiza • Mhalik</p>
-<hr>
 
-
-## 🚗 **About the Project**
-
-**JavaRide** is a Java console-based ride-hailing simulation.
-It replicates key functionalities of modern ride-hailing apps, including user registration, driver assignment, ride tracking, feedback collection, and earnings management.
-
-**Key Goals:**
-
-* Realistic ride simulation
-* Menu-driven, user-friendly interface
-* Clear implementation of Object-Oriented Programming (OOP) principles
-* Modular and maintainable code structure
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Java-orange" alt="Java">
+  <img src="https://img.shields.io/badge/Status-Prototype-blue" alt="status">
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="license">
+</p>
 
 ---
 
-## 📘 **Core Functionalities**
+## 🚗 About JavaRide
 
-### 👤 User Registration
+**JavaRide** is a Java console-based ride-hailing simulator that replicates core behaviors of ride-hailing apps: user registration, driver assignment, ride tracking, feedback collection, and earnings management.
 
-* **Passenger**
-* **Senior / PWD / Student** (Fare discounts)
-* **Driver** (choose vehicle type & set bio)
+**Key goals**
+- Realistic ride simulation
+- Menu-driven, user-friendly console UI
+- Clear application of OOP principles
+- Modular, maintainable code
 
 ---
+
+## 📋 Table of Contents
+
+- [Core Functionalities](#-core-functionalities)  
+- [How to Run](#-how-to-run)  
+- [Console Flow (Preview)](#-console-flow-preview)  
+- [System Flow](#-system-flow)  
+- [Feature Comparison](#-feature-comparison-table)  
+- [Project Structure](#-project-structure)  
+- [Contributors](#-contributors)  
+- [Acknowledgements](#-acknowledgements)  
+- [Disclaimer](#-disclaimer)  
+- [License](#-license)
+
+---
+
+## 📘 Core Functionalities
+
+### 👥 User Registration
+- Passenger (Regular / Student / Senior / PWD)
+- Driver (vehicle type, plate number, short bio)
 
 ### 🧳 Passenger Features
-
-* Book a ride:
-
-  * Number of passengers
-  * Pickup & drop-off points
-  * Vehicle type
-  * Fare estimate & driver assignment
-    
-* Track ride progress
-
-  * **Driver message at ≥80%:** *“I’m on my way!”*
-  * Cancellation allowed only if **<50% progress**
-    
-* Leave review & rating
-  
-* View profile and booking history
-
----
+- Book a ride (passengers, pickup/drop-off, vehicle type)
+- Fare estimate & randomized driver assignment
+- Track ride progress (with messages at thresholds)
+- Cancel under rules (e.g., allowed if \<50% progress)
+- Leave reviews & ratings
+- View profile & booking history
 
 ### 🚙 Driver Features
+- Receive ride requests (accept/decline)
+- View pickup/drop-off, distance, passengers
+- Send short messages to passenger
+- Booking history (accepted/declined)
+- View passenger reviews, track earnings
 
-* Receive ride requests:
-
-  * Accept / decline
-  * Check distance, passengers, pickup & drop-off points
-  * Send short messages to passengers
-    
-* Track booking history (accepted / declined)
-* View passenger reviews
-* Track earnings and cash-out
-
----
-
-### 🌐 System Enhancements
-
-* Randomized driver assignment
-* Color-coded console UI
-* ASCII art and text animations
+### 🔧 System Enhancements
+- Randomized driver assignment
+- Color-coded console UI (ANSI-friendly)
+- ASCII art, animated loading/progress bars
 
 ---
 
-## 🧠 **OOP Concepts Applied**
+## ▶️ How to Run
 
-| Concept           | Implementation                                                                             |
-| ----------------- | ------------------------------------------------------------------------------------------ |
-| **Encapsulation** | Private fields with getters/setters in `User`, `Passenger`, `Driver`, `Vehicle`, `Booking` |
-| **Inheritance**   | `User → Passenger / Driver`; `Vehicle → Motorcycle / NormalCar / PremiumCar`               |
-| **Polymorphism**  | Overridden methods in Vehicle subclasses (`getType()`, `calculateFare()`)                  |
-| **Abstraction**   | `Vehicle` is abstract; base logic implemented in subclasses                                |
-
----
-
-## 🗂️ **Project Structure**
+**Compile all Java files**
 
 ```
-🗂️REMix/
-└── 🗂️JavaRide Test/
-    ├── Main.java
-    ├── Utility.java
-    ├── User.java
-    ├── UserType.java
-    ├── Passenger.java
-    ├── Driver.java
-    ├── Vehicle.java
-    ├── VehicleType.java
-    |    ├── Motorcycle
-    |    ├── Normal
-    |    └── Premium
-    |    
-    ├── Booking.java
-    ├── BookingStatus.java
-    ├── Review.java
-    ├── DataGenerator.java
-    └── LocationManager.java
+javac *.java
 
-```
-
----
-
-## ▶️ **How to Run**
-
-**Compile:**
-
-```
-javac /*.java
 ```
 
 **Run:**
