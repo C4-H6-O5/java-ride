@@ -34,7 +34,7 @@
 - [Feature Comparison](#-feature-comparison-table)  
 - [Project Structure](#-project-structure)  
 - [Contributors](#-contributors)  
-- [Acknowledgements](#-acknowledgements)  
+- [Acknowledgement](#-acknowledgement)  
 - [Disclaimer](#-disclaimer)  
 
 
