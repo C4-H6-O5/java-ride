@@ -35,6 +35,6 @@ public class Driver extends User {
         return super.toString() + "\n" +
                "Vehicle: " + (vehicle != null ? vehicle.toString() : "None assigned") + "\n" +
                "Bio: " + bio + "\n" +
-               String.format("Rating: %.1f ⭐", getRating());
+               String.format("Rating: %.1f", getRating());
     }
 }
