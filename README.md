@@ -9,7 +9,6 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Java-orange" alt="Java">
-  <img src="https://img.shields.io/badge/Status-Prototype-blue" alt="status">
 </p>
 
 ---
@@ -35,7 +34,7 @@
 - [Feature Comparison](#-feature-comparison-table)  
 - [Project Structure](#-project-structure)  
 - [Contributors](#-contributors)  
-- [Acknowledgements](#-acknowledgements)  
+- [Acknowledgements](#-acknowledgement)  
 - [Disclaimer](#-disclaimer)  
 
 ---
@@ -273,7 +272,7 @@ Press [ENTER] to continue to the Home Page...
 
 ---
 
-## ✨ **| ACKNOWLEDGEMENT |** ✨
+## ✨ **ACKNOWLEDGEMENT** ✨
 We, the proponents of JavaRide, sincerely express our gratitude to everyone who supported the completion of this project. We thank our instructor for the guidance, feedback, and encouragement that strengthened our skills and understanding of Object-Oriented Programming, and we appreciate our classmates and peers for their collaboration and helpful insights throughout the process. To our families, thank you for your patience, motivation, and unwavering support during long hours of development and documentation. We also acknowledge the tools, references, and learning materials that contributed to the success of this project. This achievement reflects the collective support and encouragement we received, and we are deeply grateful to all who contributed in any way.
 
 ---
