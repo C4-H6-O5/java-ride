@@ -34,7 +34,7 @@
 - 🔄 [System Flow](#-system-flow)  
 - 🔍 [Feature Comparison](#-feature-comparison-table)  
 - 👥 [Contributors](#-contributors)  
-- ✨ [Acknowledgement](#acknowledgement)  
+- ✨ [Acknowledgement](#-acknowledgement)  
 - 📢 [Disclaimer](#-disclaimer)  
 
 ---
