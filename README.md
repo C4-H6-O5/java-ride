@@ -37,7 +37,7 @@
 - [Project Structure](#-project-structure)  
 - [Contributors](#-contributors)  
 - [Acknowledgement](#-acknowledgement)    
-- [Disclaimer](#-disclaimer)  
+
 
 
 ---
@@ -76,7 +76,7 @@
 - View passenger reviews, track earnings
 
 ### 🔧 System Enhancements
-- Randomized driver assignment
+- Randomized Data
 - Color-coded console UI (ANSI-friendly)
 - ASCII art, animated loading/progress bars
 
@@ -208,7 +208,8 @@ Press [ENTER] to continue to the Home Page...
 
 1. **Passenger**
    * Enter Name, Age, Address, Contact Number
-   * User type (Regular, Student (**StudentID**), Senior, and PWD)
+   * User type (Regular, Student, Senior, and PWD)
+   * ID Verification (Discount)
 
 2. **Book a Ride**
 
@@ -217,18 +218,16 @@ Press [ENTER] to continue to the Home Page...
    * Select Vehicle Type
    * Fare Estimate displayed
    * System generates a random driver
-   * Confirm or cancel ride
+   * Confirm or Reject ride
 
-     * Cancellation allowed only if **<50%** trip progress
+     * Once Confirmed, Cancellation allowed only if **<50%** trip progress
    * Ride progress updates
 
      * **Driver message at ≥80%:** *“I’m on my way!”*
    * Upon arrival, leave review & rating
 
-3. **Check Reviews & Ratings**
-   * System Generates Random Review and rating
 
-4. **View Profile**
+3. **View Profile**
 
    * Show personal details
    * View Booking History
@@ -246,16 +245,15 @@ Press [ENTER] to continue to the Home Page...
     * Accept or Decline
     * View Pickup, Drop-off, Distance, Passengers
     * After Drop-off → receive review & rating
-    * Optional: send short message to passenger
 
 3. **Booking History**
-    * Accepted / Declined rides
-
-3. **Reviews**
+    * Accepted / Declined rides  
     * View passenger feedback
 
 4. **My Earnings**
-    * Track total income
+    * Driver's Information
+    * Delete Account
+    * Track and withdraw earnings
     * Cash-out simulation
 
 ---
@@ -273,8 +271,8 @@ Press [ENTER] to continue to the Home Page...
 | ---------------------- | --------- | ---------------------- |
 | Book a Ride            | ✅ Yes     | ❌ No                   |
 | Confirm Ride           | ✅ Yes     | ❌ No                   |
-| Track Ride Progress    | ✅ Yes     | ❌ No                   |
-| Leave Review & Rating  | ✅ Yes     | ✅ Yes (after drop-off) |
+| Track Ride Progress    | ✅ Yes     | ✅ Yes                  |
+| Leave Review & Rating  | ✅ Yes     | ❌ No                   |
 | Receive Ride Requests  | ❌ No      | ✅ Yes                  |
 | Accept / Decline Ride  | ❌ No      | ✅ Yes                  |
 | Send Messages          | ❌ No      | ✅ Yes                  |
@@ -302,7 +300,4 @@ We, the proponents of JavaRide, sincerely express our gratitude to everyone who 
 
 ---
 
-## 📢 Disclaimer
-
-<small> The JavaRide project was developed by Computer Science students as part of the academic requirements for CS 211: Object-Oriented Programming. It is intended exclusively for educational and demonstration purposes. Students are welcome to review and learn from the project, but creating original implementations is highly encouraged. </small>
 

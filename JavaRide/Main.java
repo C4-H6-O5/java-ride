@@ -419,7 +419,8 @@ public class Main {
             System.out.println(Utility.BLUE + Utility.BOLD + "======================================="+ Utility.RESET);
             System.out.println(Utility.BRIGHT_GREEN + Utility.BOLD + "\n[1]" + Utility.RESET + " View Average Rating from Passengers");
             System.out.println(Utility.GREEN + Utility.BOLD + "[2]" + Utility.RESET + " View My Earnings");
-            System.out.println(Utility.RED + Utility.BOLD + "[3]" + Utility.RESET + " Return to Driver Menu");
+            System.out.println(Utility.GREEN + Utility.BOLD + "[3]" + Utility.RESET + " Delete Account");
+            System.out.println(Utility.RED + Utility.BOLD + "[4]" + Utility.RESET + " Return to Driver Menu");
             System.out.println(" ");
             System.out.print(Utility.BOLD + "Select an option: " + Utility.BOLD);
             int choice = Utility.getIntInput(input);
@@ -447,6 +448,14 @@ public class Main {
                     viewDriverEarnings(driver);
                     break;
                 case 3:
+                    System.out.print(Utility.YELLOW + "Are you sure? [1] " + Utility.BRIGHT_GREEN + "Yes " + Utility.RESET + Utility.YELLOW + "[2] " + Utility.RESET + Utility.RED + "No: "+ Utility.RESET);
+                    if (Utility.getIntInput(input) == 1) {
+                        driverAccounts.remove(driver);
+                        System.out.println(Utility.YELLOW + "Account deleted. Exiting..." + Utility.RESET);
+                        input.nextLine();
+                        System.exit(0);
+                    }
+                case 4:
                     return; 
                 default:
                     System.out.println(Utility.RED + "Invalid choice. Please try again." + Utility.RESET);
