@@ -145,7 +145,7 @@ public final class Utility {
         }
 
         while (true) {
-            System.out.print("\nEnter type: ");
+            System.out.print(BOLD + "\nEnter type: " + RESET);
             int choice = getIntInput(input);
 
             if (choice > 0 && choice <= types.length) return types[choice - 1];
