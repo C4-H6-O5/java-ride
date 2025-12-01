@@ -42,14 +42,17 @@
 
 ---
 
-## 🧠 Object-Oriented Programming  
-| Concept | Implementation | | ----------------- | ------------------------------------------------------------------------------------------ | 
-| **Encapsulation** | Private fields with getters/setters in User, Passenger, Driver, Vehicle, Booking | 
-| **Inheritance** | User → Passenger / Driver; Vehicle → Motorcycle / NormalCar / PremiumCar | 
-| **Polymorphism** | Overridden methods in Vehicle subclasses (getType(), calculateFare()) | 
-| **Abstraction** | Vehicle is abstract; base logic implemented in subclasses | 
+## 🧠 Object-Oriented Programming
+
+| Concept           | Implementation                                                                                  |
+|------------------|------------------------------------------------------------------------------------------------|
+| **Encapsulation** | Private fields with getters/setters in `User`, `Passenger`, `Driver`, `Vehicle`, `Booking`     |
+| **Inheritance**   | `User → Passenger / Driver`; `Vehicle → Motorcycle / NormalCar / PremiumCar`                  |
+| **Polymorphism**  | Overridden methods in Vehicle subclasses (`getType()`, `calculateFare()`)                      |
+| **Abstraction**   | `Vehicle` is abstract; base logic implemented in subclasses                                     |
 
 ---
+
 
 ## 📘 Core Functionalities
 
