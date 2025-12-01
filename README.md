@@ -91,8 +91,8 @@ It replicates key functionalities of modern ride-hailing apps, including user re
 ## 🗂️ **Project Structure**
 
 ```
-🗂️JavaRide Test/
-└── 🗂️java-ride/
+🗂️REMix/
+└── 🗂️JavaRide Test/
     ├── Main.java
     ├── Utility.java
     ├── User.java
@@ -101,9 +101,9 @@ It replicates key functionalities of modern ride-hailing apps, including user re
     ├── Driver.java
     ├── Vehicle.java
     ├── VehicleType.java
-    |    ├── MOTORCYCLE
-    |    ├── NORMAL
-    |    └── PREMIUN
+    |    ├── Motorcycle
+    |    ├── Normal
+    |    └── Premium
     |    
     ├── Booking.java
     ├── BookingStatus.java
@@ -120,42 +120,74 @@ It replicates key functionalities of modern ride-hailing apps, including user re
 **Compile:**
 
 ```
-javac javaride/*.java
+javac /*.java
 ```
 
 **Run:**
 
 ```
-java javaride.Main
+java Main
 ```
 
 ---
 
-## 📝 **Sample Console Flow**
+## 📝 **Console Flow**
 
-```
-Welcome to JavaRide!
-Enter your name: Lia
-Choose user type:
-1. Regular Passenger
-2. Senior/PWD/Student
-Your choice: 1
+           )))                                               
+         (((                                       ____________
+           )))                                _____//___||___\\_____                                                                                                           
+          ____                               (______    __        __)
+         /   /_____ ___ ___    ___  _____ __ /  ___ \  (__)______/ /____
+  ____  /   //  ___ ` / \  \  /  //  __  ` //  /__/ / /  //  ___  //  _ \
+ /   /_/   //  /_ /  /   \  \/  //  /__/  //  __,__/ /  //  /__/ //  __/ 
+ \_______ / \____,__/     \____/ \____,__//__/  \__\/__/ \___,__/ \____/ 
 
-Booking a Ride...
-Pickup: Ayala Terminal
-Drop-off: Divisoria
-Vehicle: Normal Car
-Estimated Fare: ₱112.00
+------------------------------------------------------------------------
+                      Welcome to JavaRide                                                                                                                                      
+                  Brewing Better Rides For You!
+------------------------------------------------------------------------
 
-Driver matched: Carlo (Normal Car)
-Start ride? (Y/N): Y
+Press [ENTER] to continue...
 
-[35%] Heading to your location...
-[80%] "I'm on my way!"
-[100%] Ride completed!
++=============================================================+
+|                      JAVA RIDE MAIN MENU                    |
++=============================================================+
+[1] Passenger
+[2] Driver
+[3] Exit Application
 
-Rate your driver (1–5): 5
-Review submitted. Thank you!
+Select your account type: 1
+
++=============================================================+
+|                  NEW PASSENGER REGISTRATION                 |
++=============================================================+
+Name: Elaiza
+Age: 20
+Address: Sitio Calumpang
+Contact Number: 09123456789
+
++=============================================================+
+|                       SELECT USER TYPE                      |
++=============================================================+
+[1] REGULAR
+[2] STUDENT
+[3] SENIOR
+[4] PWD
+ 
+Enter number for type: 2
+Enter your ID Number (STUDENT): 24-01788
+
+ --- All set! Let's hit the road, Elaiza!---
+> Loading your dashboard...
+Initializing Dashboard
+██████████████████████████████ 100%
+
+============================================ 
+
+Hello, Elaiza! Your setup is now complete.
+
+Press [ENTER] to continue to the Home Page... 
+
 ```
 
 ---
@@ -165,17 +197,20 @@ Review submitted. Thank you!
 
 ### **1️⃣ Login Page**
 
-* Enter Name, Age, Address, Contact Number
 * Select User Type:
 
-  * Passenger / Senior / PWD / Student
-  * Driver (choose vehicle type & set bio)
+  * Passenger 
+  * Driver 
 
 ---
 
 ### **2️⃣ Passenger Menu**
 
-1. **Book a Ride**
+1. **Passenger**
+   * Enter Name, Age, Address, Contact Number
+   * User type (Regular, Student (**StudentID**), Senior, and PWD)
+
+2. **Book a Ride**
 
    * Enter number of passengers
    * Specify Pickup & Drop-off points
@@ -189,8 +224,11 @@ Review submitted. Thank you!
 
      * **Driver message at ≥80%:** *“I’m on my way!”*
    * Upon arrival, leave review & rating
-2. **Check Reviews & Ratings**
-3. **View Profile**
+
+3. **Check Reviews & Ratings**
+   * System Generates Random Review and rating
+
+4. **View Profile**
 
    * Show personal details
    * View Booking History
@@ -200,22 +238,25 @@ Review submitted. Thank you!
 
 ### **3️⃣ Driver Menu**
 
-1. **Ride Requests**
+1. **Driver**
+   * Enter Name, Age, Address, Contact Number, Short Bio and Plate Number
+   * Vehicle Type (Motorcycle, Normal, and Premium)
 
-   * Accept or Decline
-   * View Pickup, Drop-off, Distance, Passengers
-   * After Drop-off → receive review & rating
-   * Optional: send short message to passenger
-2. **Booking History**
+2. **Ride Requests**
+    * Accept or Decline
+    * View Pickup, Drop-off, Distance, Passengers
+    * After Drop-off → receive review & rating
+    * Optional: send short message to passenger
 
-   * Accepted / Declined rides
+3. **Booking History**
+    * Accepted / Declined rides
+
 3. **Reviews**
+    * View passenger feedback
 
-   * View passenger feedback
 4. **My Earnings**
-
-   * Track total income
-   * Cash-out simulation
+    * Track total income
+    * Cash-out simulation
 
 ---
 
@@ -253,6 +294,11 @@ Review submitted. Thank you!
 | 🧑‍🎨 **Elaiza Espartinez**       | Design & Documentation Lead (Front-End / UI) | Handles console UI, colors, ASCII art, and documentation.<br>- Improve menu design (ASCII borders, color codes)<br>- Add loading or progress animations<br>- Maintain `README.md` and commit updates      |
 
 
+
+---
+
+## ✨ **| ACKNOWLEDGEMENT |** ✨
+*We sincerely express our gratitude to our instructor for the guidance and support provided throughout the completion of this project. We also extend our aappreciation to our peers for their cooperation and encouragement during the develepmont process. And also to our parents
 
 ---
 
