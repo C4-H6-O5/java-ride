@@ -53,7 +53,6 @@ public class DataGenerator {
         VehicleType type = vehicleTypes[random.nextInt(vehicleTypes.length)];
         
         StringBuilder plateBuilder = new StringBuilder();
-        // Append 3 random uppercase letters
         for (int i = 0; i < 3; i++) {
             plateBuilder.append((char) ('A' + random.nextInt(26)));
         }
@@ -77,12 +76,12 @@ public class DataGenerator {
         String lastName = lastNames[random.nextInt(lastNames.length)];
         String name = firstName + " " + lastName;
         
-        int age = 25 + random.nextInt(20); // Age between 25-44
+        int age = 25 + random.nextInt(20); 
         String city = cities[random.nextInt(cities.length)];
         String contact = generatePhoneNumber();
-        Vehicle vehicle = createRandomVehicle(); // Create a vehicle object
+        Vehicle vehicle = createRandomVehicle(); 
         String bio = driverBios[random.nextInt(driverBios.length)];
-        double rating = 3.0 + (random.nextDouble() * 2.0); // Rating between 3.0-5.0
+        double rating = 3.0 + (random.nextDouble() * 2.0); 
         
         return new Driver(name, age, city, contact, vehicle, bio, rating);
     }
@@ -93,17 +92,16 @@ public class DataGenerator {
         String lastName = lastNames[random.nextInt(lastNames.length)];
         String name = firstName + " " + lastName;
         
-        int age = 18 + random.nextInt(50); // Age between 18-67
+        int age = 18 + random.nextInt(50); 
         String city = cities[random.nextInt(cities.length)];
         String contact = generatePhoneNumber();
         UserType userType = userTypes[random.nextInt(userTypes.length)]; 
-        
+
         String idNumber = "";
         if (userType != UserType.REGULAR) {
-            // Generate random ID number for special types
             idNumber = "ID" + (100000 + random.nextInt(900000));
         }
-        
+ 
         return new Passenger(name, age, city, contact, userType, idNumber);
     }
     
@@ -135,7 +133,6 @@ public class DataGenerator {
             Passenger p = mockPassengers.get(i);
             int numPassengers = 1;
 
-            // Select two different random locations
             int pickupIndex = random.nextInt(numLocations);
             int dropoffIndex;
             do {

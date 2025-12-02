@@ -11,21 +11,10 @@ public class Review {
         this.comment = comment;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
-    }
-
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public String getComment() {
-        return comment;
-    }
+    public Passenger getPassenger() { return passenger; }
+    public Driver getDriver() { return driver; }
+    public int getRating() { return rating; }
+    public String getComment() { return comment; }
 
     @Override
     public String toString() {
